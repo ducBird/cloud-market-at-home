@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BsFillCaretDownFill } from 'react-icons/bs';
 import './navbar.css';
 
@@ -8,20 +9,20 @@ function Navbar() {
       <nav className="text-white rounded bg-primary">
         <ul className="flex justify-between w-[70%] mx-auto font-bold">
           <li className="li-nav">
-            <a href="" className="">
+            <Link to={'/'}>
               {/* Home */}
               Trang Chủ
-            </a>
+            </Link>
           </li>
           <li className="relative li-nav li-nav-shop">
-            <a href="" className="">
+            <Link to={'/shop'}>
               {/* Shop */}
               Sản Phẩm
-            </a>
+            </Link>
             <BsFillCaretDownFill />
             <ul className="sub-nav-shop">
               <li>
-                <a href="">UƯ ĐÃI</a>
+                <a href="">ƯU ĐÃI</a>
               </li>
               <li>
                 <a href="">Gà</a>
@@ -53,24 +54,24 @@ function Navbar() {
             </ul>
           </li>
           <li className="li-nav">
-            <a href="" className="">
+            <Link to={'aboutUs'}>
               {/* About Us */}
               Về Chúng Tôi
-            </a>
+            </Link>
             <BsFillCaretDownFill />
           </li>
           <li className="li-nav">
-            <a href="" className="">
+            <Link to={'community'}>
               {/* Community */}
               Cộng Đồng
-            </a>
+            </Link>
             <BsFillCaretDownFill />
           </li>
           <li className="li-nav">
-            <a href="" className="">
+            <Link to={'contactUs'}>
               {/* Contact Us */}
               Liên Hệ
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

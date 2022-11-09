@@ -8,7 +8,7 @@ function App() {
       <header>
         <Header />
       </header>
-      <section className="h-[1000px] relative top-[130px]">Section</section>
+      <section className="h-[1000px] relative top-[130px]"></section>
       <footer>
         <Footer />
       </footer>
