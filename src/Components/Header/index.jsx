@@ -1,12 +1,13 @@
-import React from 'react';
-import './headerStyle.css';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
+import "./headerStyle.css";
 import {
   AiOutlineUser,
   AiOutlineShoppingCart,
   AiOutlineSearch,
-} from 'react-icons/ai';
-import CloudMarketLogo from '../../assets/header/logo/cloud-market.jpg';
-import Navbar from './Navi/Navbar';
+} from "react-icons/ai";
+import CloudMarketLogo from "../../assets/header/logo/cloud-market.jpg";
+import Navbar from "./Navi/Navbar";
 function Header() {
   return (
     <div className="fixed top-0 left-0 right-0 z-10">
@@ -16,13 +17,13 @@ function Header() {
             <img
               src={CloudMarketLogo}
               alt="logo Cloud Market At Home"
-              style={{ display: 'inline-block', width: '60px' }}
+              style={{ display: "inline-block", width: "60px" }}
             />
             <span className="font-bold title-logo">Cloud Market AH</span>
           </a>
           <div className="ml-20 search-content">
             <button className="ml-2 search-icon">
-              <AiOutlineSearch size={'28px'} className="opacity-80" />
+              <AiOutlineSearch size={"28px"} className="opacity-80" />
             </button>
             <input
               type="text"
@@ -36,12 +37,12 @@ function Header() {
             href="#"
             className="flex items-center transition-all hover:text-primary"
           >
-            <AiOutlineUser size={'24px'} />
+            <AiOutlineUser size={"24px"} />
             <span className="ml-2 font-bold">Login</span>
           </a>
           <div className="mini-cart rounded-tr-md rounded-bl-md rounded-br-3xl rounded-tl-3xl">
             <a href="#">
-              <AiOutlineShoppingCart size={'24px'} />
+              <AiOutlineShoppingCart size={"24px"} />
             </a>
           </div>
         </div>

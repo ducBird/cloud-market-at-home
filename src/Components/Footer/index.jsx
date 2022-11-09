@@ -1,11 +1,11 @@
-import React from 'react';
-import './footerStyle.css';
-import { HiOutlineMail } from 'react-icons/hi';
-import { BsFacebook, BsInstagram } from 'react-icons/bs';
+import React from "react";
+import "./footerStyle.css";
+import { HiOutlineMail } from "react-icons/hi";
+import { BsFacebook, BsInstagram } from "react-icons/bs";
 function Footer() {
   return (
     <>
-      <div className="p-5 mt-5 text-white container-footer bg-primary">
+      <div className="p-5 mt-5 text-white container-footer bg-primary relative top-[10rem]">
         <div className="content-footer">
           <div className="main-menu">
             <h5>Thực Đơn Chính</h5>
@@ -52,13 +52,13 @@ function Footer() {
             </p>
             <div className="flex items-center gap-5 mt-5 icon-community">
               <i className="hover:cursor-pointer">
-                <BsFacebook size={'22px'} />
+                <BsFacebook size={"22px"} />
               </i>
               <i className="hover:cursor-pointer">
-                <BsInstagram size={'22px'} />
+                <BsInstagram size={"22px"} />
               </i>
               <i className="hover:cursor-pointer">
-                <HiOutlineMail size={'25px'} />
+                <HiOutlineMail size={"25px"} />
               </i>
             </div>
           </div>

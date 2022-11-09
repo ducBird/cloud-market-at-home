@@ -1,6 +1,7 @@
-import React from 'react';
-import { BsFillCaretDownFill } from 'react-icons/bs';
-import './navbar.css';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
+import { BsFillCaretDownFill } from "react-icons/bs";
+import "./navbar.css";
 
 function Navbar() {
   return (
