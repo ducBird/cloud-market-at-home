@@ -1,6 +1,7 @@
-import './App.css';
-import Footer from './Components/Footer';
-import Header from './Components/Header';
+import "./App.css";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import IntroductionHomePage from "./Components/Home";
 
 function App() {
   return (
@@ -8,7 +9,10 @@ function App() {
       <header>
         <Header />
       </header>
-      <section className="h-[1000px] relative top-[130px]"></section>
+      <section className="relative top-[130px]">
+        {/* Introduction home page */}
+        <IntroductionHomePage />
+      </section>
       <footer>
         <Footer />
       </footer>
