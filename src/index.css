@@ -7,6 +7,7 @@
   .li-nav {
     @apply rounded-tr-md rounded-bl-md rounded-br-3xl rounded-tl-3xl  px-[30px] py-[6px] my-[10px] flex items-center gap-1;
   }
+
   .container {
     @apply w-[1320px] my-0 mx-auto py-[20px] px-0;
   }
