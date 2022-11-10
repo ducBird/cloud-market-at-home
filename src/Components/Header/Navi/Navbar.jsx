@@ -54,21 +54,21 @@ function Navbar() {
             </ul>
           </li>
           <li className="li-nav">
-            <Link to={'aboutUs'}>
+            <Link to={'/aboutUs'}>
               {/* About Us */}
               Về Chúng Tôi
             </Link>
             <BsFillCaretDownFill />
           </li>
           <li className="li-nav">
-            <Link to={'community'}>
+            <Link to={'/community'}>
               {/* Community */}
               Cộng Đồng
             </Link>
             <BsFillCaretDownFill />
           </li>
           <li className="li-nav">
-            <Link to={'contactUs'}>
+            <Link to={'/contactUs'}>
               {/* Contact Us */}
               Liên Hệ
             </Link>
