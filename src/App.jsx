@@ -5,7 +5,7 @@ import IntroductionHomePage from "./Components/Home";
 
 function App() {
   return (
-    <div className="relative App">
+    <div className="relative App ">
       <header>
         <Header />
       </header>
