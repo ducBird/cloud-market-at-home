@@ -26,7 +26,9 @@ function FeaturedProductSlider() {
                     alt=""
                   />
                   <div className="thumbnail-overlay">
-                    <div className="info">Xem nhanh</div>
+                    <a href="">
+                      <div className="info">Xem nhanh</div>
+                    </a>
                   </div>
                   <div className="baner-holder absolute top-0 right-0">
                     <div className="sale-banner">Sale</div>
@@ -42,7 +44,7 @@ function FeaturedProductSlider() {
                     <span className="price-sale mr-1 text-red-600">
                       {value.price_sale}
                     </span>
-                    <span className="price old line-through">
+                    <span className="price-old line-through">
                       {value.price_old}
                     </span>
                   </span>

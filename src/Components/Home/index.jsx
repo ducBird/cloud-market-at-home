@@ -1,16 +1,15 @@
 import React from "react";
-import FeaturedProducts from "./IntroductionHomePage/FeaturedProductsHomePage/FeaturedProducts";
-import Slider from "./IntroductionHomePage/Slider/Slider";
-import Works from "./IntroductionHomePage/works/Works";
-
-function IntroductionHomePage() {
+import Footer from "../Footer";
+import Header from "../Header";
+import IntroductionHomePage from "../Home/IntroductionHomePage";
+function HomePage() {
   return (
-    <div className="introduction-home-page">
-      <Slider />
-      <Works />
-      <FeaturedProducts />
+    <div className="home">
+      <section className="container">
+        <IntroductionHomePage />
+      </section>
     </div>
   );
 }
 
-export default IntroductionHomePage;
+export default HomePage;

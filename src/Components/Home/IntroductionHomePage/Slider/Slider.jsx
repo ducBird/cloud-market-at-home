@@ -19,7 +19,11 @@ function Sliders() {
           {dataSlides.map((value, index) => {
             return (
               <div className="silder" key={index}>
-                <img src={value.imgSlider} alt="" />
+                <img
+                  className="w-[100%] h-[700px] mx-auto"
+                  src={value.imgSlider}
+                  alt=""
+                />
               </div>
             );
           })}
