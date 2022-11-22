@@ -1,14 +1,14 @@
-import slider1 from "../../../../assets/home/IntroductionHomePage/SliderIntroduction/slider1.jpg";
-import slider2 from "../../../../assets/home/IntroductionHomePage/SliderIntroduction/slider2.jpg";
+import slider3 from "../../../../assets/home/IntroductionHomePage/SliderIntroduction/slider3.jpg";
+import slider4 from "../../../../assets/home/IntroductionHomePage/SliderIntroduction/slider4.jpg";
 
 const dataSlides = [
   {
     id: 1,
-    imgSlider: slider1,
+    imgSlider: slider4,
   },
   {
     id: 1,
-    imgSlider: slider2,
+    imgSlider: slider3,
   },
 ];
 
