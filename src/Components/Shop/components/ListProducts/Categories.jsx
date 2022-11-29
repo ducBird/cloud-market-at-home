@@ -1,21 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
 import ShopSideBar from "../SideBar/ShopSideBar";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Products from "../Products/Products";
-import dataProducts from "../../../../data/products";
-import dataCategories from "../../../../data/categories";
-function Categories() {
-  const location = useLocation();
-  let arrPathName = location.pathname.split("/");
-  const categoryId = parseInt(arrPathName[arrPathName.length - 1]);
+import { axiosClient } from "../../../../libraries/axioClient";
 
-  const data = dataProducts.filter((product) => {
-    return product.categoryId === categoryId;
-  });
-  const dataCategory = dataCategories.find((category) => {
-    return category.categoryId === categoryId;
-  });
+function Categories() {
+  const { categoryId } = useParams();
+  const [category, setCategory] = React.useState([]);
+  React.useEffect(() => {
+    axiosClient.get("/categories/" + categoryId).then((response) => {
+      setCategory(response.data);
+    });
+  }, [categoryId]);
 
   return (
     <div className="shop-hot-deal">
@@ -26,7 +23,7 @@ function Categories() {
           </span>
           <span className="mx-2">/</span>
           <span>
-            <a href={`/shop/${categoryId}`}>{dataCategory.name}</a>
+            <a href={`/shop/${categoryId}`}>{category.name}</a>
           </span>
           <span className="mx-2">/</span>
           <span className="text-black">TRANG 1 CỦA 1</span>
@@ -37,7 +34,7 @@ function Categories() {
             <ShopSideBar />
           </>
           <>
-            <Products dataProducts={data} />
+            <Products />
           </>
         </div>
       </div>

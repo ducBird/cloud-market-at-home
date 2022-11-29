@@ -1,23 +1,22 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
-import dataProducts from "../../../../data/products";
+import { useParams } from "react-router-dom";
+import { axiosClient } from "../../../../libraries/axioClient";
 function ProductDetail() {
-  // let id = useParams().id;
-  const location = useLocation();
-  let arrPathName = location.pathname.split("/");
-  const categoryId = parseInt(arrPathName[arrPathName.length - 2]);
-  const id = parseInt(arrPathName[arrPathName.length - 1]);
-  const productDetail = dataProducts.find((product) => {
-    return product.id === id && product.categoryId === categoryId;
-  });
-  console.log("id: ", id);
-  console.log("category: ", categoryId);
-  // console.log(productDetail);
+  const { categoryId } = useParams();
+  const { id } = useParams();
+  const [product, setProduct] = React.useState([]);
+
+  // get dữ liệu products
+  React.useEffect(() => {
+    axiosClient.get("/products/" + categoryId + "/" + id).then((response) => {
+      setProduct(response.data);
+    });
+  }, [categoryId, id]);
   return (
     <div className="product-detail">
       <div className="container">
         <div>
-          <img src={productDetail.imageProduct} alt="" />
+          <img src={product.urlImage} alt="" />
         </div>
       </div>
     </div>

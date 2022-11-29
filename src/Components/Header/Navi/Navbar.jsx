@@ -3,8 +3,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import "./navbar.css";
-import dataShopPage from "../../Shop/ShopPage/ShopPage";
+import { axiosClient } from "../../../libraries/axioClient";
 function Navbar() {
+  const [categories, setCategories] = React.useState([]);
+  React.useEffect(() => {
+    axiosClient.get("/categories").then((response) => {
+      setCategories(response.data);
+    });
+    // axiosClient.get("/categories/" + categoryId).then((response) => {
+    //   setCategory(response.data);
+    // });
+  }, []);
   return (
     <>
       <nav className="text-white rounded bg-primary">
@@ -22,11 +31,11 @@ function Navbar() {
             </Link>
             <BsFillCaretDownFill />
             <ul className="sub-nav-shop">
-              {dataShopPage.map((category, index) => {
+              {categories.map((category, index) => {
                 return (
                   <li key={index}>
-                    <Link to={`/shop/${category.id}`}>
-                      <p>{category.title}</p>
+                    <Link to={`/shop/${category._id}`}>
+                      <p>{category.name}</p>
                     </Link>
                   </li>
                 );
@@ -51,6 +60,12 @@ function Navbar() {
             <Link to={"/contactUs"}>
               {/* Contact Us */}
               Liên Hệ
+            </Link>
+          </li>
+          <li className="li-nav">
+            <Link to={"/test"}>
+              {/* databatest */}
+              Test
             </Link>
           </li>
         </ul>
