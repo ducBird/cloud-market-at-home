@@ -42,3 +42,6 @@
 .product-image:hover .thumbnail-overlay {
   opacity: 1;
 }
+.products-featured {
+  margin-rigth: 10px;
+}

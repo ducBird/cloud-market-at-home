@@ -2,10 +2,8 @@
 import React from "react";
 import "./ShopSideBar.css";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import { axiosClient } from "../../../../libraries/axioClient";
 function ShopSideBar() {
-  const { categoryId } = useParams();
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {
     axiosClient.get("/categories").then((response) => {
@@ -14,7 +12,7 @@ function ShopSideBar() {
     // axiosClient.get("/categories/" + categoryId).then((response) => {
     //   setCategory(response.data);
     // });
-  }, [categoryId]);
+  }, []);
   return (
     <div className="side-bar mr-[20px]">
       <div className="side-bar-block pr-[40px] border-r border-primary">

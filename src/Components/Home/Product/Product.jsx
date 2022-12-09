@@ -1,7 +1,15 @@
 import React from "react";
 import Data from "./Data";
+import { Link } from "react-router-dom";
 import "./data.css";
+import { axiosClient } from "../../../libraries/axioClient";
 const List = () => {
+  const [categories, setCategories] = React.useState([]);
+  React.useEffect(() => {
+    axiosClient.get("/categories").then((response) => {
+      setCategories(response.data);
+    });
+  }, []);
   return (
     <div className="w-[80%] mx-auto">
       <div className="border-b border-primary pt-20 mb-10">
@@ -10,18 +18,20 @@ const List = () => {
         </h2>
       </div>
       <div className="grid grid-cols-3 md:grid-cols-4 gap-5">
-        {Data.map((item, index) => {
+        {categories.map((category, index) => {
           return (
             <div key={index} className="btn__hover relative ">
-              <div className="btn__radius h-80 overflow-hidden rounded-md">
-                <img
-                  src={item.img}
-                  alt=""
-                  className="btn__product h-full w-full cursor-pointer object-cover"
-                />
-              </div>
-              <p className="text-center text-2xl text-primary font-bold m-4">
-                {item.title}
+              <Link to={`/shop/${category._id}`}>
+                <div className="btn__radius h-80 overflow-hidden rounded-md">
+                  <img
+                    src={category.imageURL}
+                    alt=""
+                    className="btn__product h-full w-full cursor-pointer object-cover"
+                  />
+                </div>
+              </Link>
+              <p className="text-center text-xl text-primary font-bold m-4">
+                {category.name}
               </p>
               {/* <div className=""> */}
               <button className="btn__images m-auto w-[100px] border border-white border-spacing-[10px] p-[5px] text-white text-center hover:text-white hover:bg-primary absolute top-[35%] left-[35%] transition">

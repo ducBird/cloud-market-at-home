@@ -13,6 +13,20 @@
   transition: all 0.2s ease-in;
 }
 
+.mini-cart {
+  cursor: pointer;
+  position: relative;
+}
+.mini-cart span {
+  position: absolute;
+  top: -12px;
+  right: -7px;
+  background: red;
+  font-size: 10px;
+  color: #ffffff;
+  padding: 3px 5px;
+  border-radius: 50%;
+}
 .mini-cart:hover {
   background-color: #005745;
   color: #fff;

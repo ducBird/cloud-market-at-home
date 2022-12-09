@@ -11,8 +11,8 @@ const asseemon = () => {
       <div className="grid grid-cols-4 gap-10 w-[80%] mx-auto">
         {Img.map((item, index) => {
           return (
-            <a href="#">
-              <div key={index}>
+            <a href="#" key={index}>
+              <div>
                 <img src={item.img} alt="" />
               </div>
             </a>

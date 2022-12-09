@@ -1,18 +1,16 @@
 /* eslint-disable array-callback-return */
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import "./navbar.css";
 import { axiosClient } from "../../../libraries/axioClient";
 function Navbar() {
+  const { categoryId } = useParams();
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {
     axiosClient.get("/categories").then((response) => {
       setCategories(response.data);
     });
-    // axiosClient.get("/categories/" + categoryId).then((response) => {
-    //   setCategory(response.data);
-    // });
   }, []);
   return (
     <>
@@ -31,6 +29,11 @@ function Navbar() {
             </Link>
             <BsFillCaretDownFill />
             <ul className="sub-nav-shop">
+              <li key="hotdeal">
+                <Link to={"/shop/hotdeal"}>
+                  <p>Khuyến mãi</p>
+                </Link>
+              </li>
               {categories.map((category, index) => {
                 return (
                   <li key={index}>

@@ -8,6 +8,7 @@ import {
 } from "react-icons/ai";
 import CloudMarketLogo from "../../assets/header/logo/cloud-market.jpg";
 import Navbar from "./Navi/Navbar";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -41,11 +42,12 @@ function Header() {
             <AiOutlineUser size={"24px"} />
             <span className="ml-2 font-bold">Login</span>
           </a>
-          <div className="mini-cart rounded-tr-md rounded-bl-md rounded-br-3xl rounded-tl-3xl">
-            <a href="#">
-              <AiOutlineShoppingCart size={"24px"} />
-            </a>
-          </div>
+          <Link to="/shop/card">
+            <div className="mini-cart rounded-tr-md rounded-bl-md rounded-br-3xl rounded-tl-3xl">
+              <span className="mr-2">0</span>
+              <AiOutlineShoppingCart size={"20px"} />
+            </div>
+          </Link>
         </div>
       </div>
       <Navbar />

@@ -1,10 +1,10 @@
 import "./App.css";
+import React from "react";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import HomePage from "./Components/Home";
 import ShopPage from "./Components/Shop/ShopPage";
 import Categories from "./Components/Shop/components/ListProducts/Categories";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ProductDetail from "./Components/Shop/components/ProductDetail/ProductDetail";
@@ -12,7 +12,7 @@ import AboutUs from "./Components/AboutUs";
 import Community from "./Components/Community";
 import Contactus from "./Components/ContactUs";
 import TestData from "./Components/TestData";
-
+import ShoppingCard from "./Components/Shop/ShoppingCard/ShoppingCard";
 function App() {
   return (
     <div className="relative App">
@@ -25,7 +25,9 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
             <Route path="/shop/:categoryId" element={<Categories />} />
+            <Route path="/shop/hotdeal" element={<Categories />} />
             <Route path="/shop/:categoryId/:id" element={<ProductDetail />} />
+            <Route path="/shop/card" element={<ShoppingCard />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/test" element={<TestData />} />
             <Route path="/community" element={<Community />} />

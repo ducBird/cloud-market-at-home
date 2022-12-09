@@ -1,35 +1,41 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Link } from "react-router-dom";
-import dataShopPage from "./ShopPage";
+import { axiosClient } from "../../../libraries/axioClient";
 function ShopPage() {
+  const [categories, setCategories] = React.useState([]);
+  React.useEffect(() => {
+    axiosClient.get("/categories").then((response) => {
+      setCategories(response.data);
+    });
+  }, []);
   return (
     <div className="shop-page">
       <div className="container">
         <div className=" text-primary text-xs breadcrumb-collection">
           <span>
-            <a href="/">TRANG CHU</a>
+            <a href="/">Trang chủ</a>
           </span>
           <span className="mx-2">/</span>
           <span>
-            <a href="/shop">SẢN PHẨM</a>
+            <a href="/shop">Sản phẩm</a>
           </span>
           <span className="mx-2">/</span>
-          <span className="text-black">TRANG 1 CỦA 2</span>
+          <span className="text-black">Trang 1 của 1</span>
           <p className="border-b border-primary my-5"></p>
         </div>
         <div className="list-collection-wrapper">
           <div className="grid grid-cols-3">
-            {dataShopPage.map((value, index) => {
+            {categories.map((category, index) => {
               return (
                 <div className="one-third mx-2 my-3" key={index}>
-                  <Link to={value.link}>
+                  <Link to={`/shop/${category._id}`}>
                     <div className="one-third-image">
-                      <img src={value.imageShopPage} alt="" />
+                      <img src={category.imageURL} alt="" />
                     </div>
                     <div className="one-third-title">
                       <p className="text-primary text-center font-bold mt-3">
-                        {value.title}
+                        {category.name}
                       </p>
                     </div>
                   </Link>
