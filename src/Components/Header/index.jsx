@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "./headerStyle.css";
 import {
   AiOutlineUser,
@@ -34,13 +34,15 @@ function Header() {
           </div>
         </div>
         <div className="flex items-center gap-10 w-[300px]">
-          <a
-            href="#"
-            className="flex items-center transition-all hover:text-primary"
-          >
-            <AiOutlineUser size={"24px"} />
-            <span className="ml-2 font-bold">Login</span>
-          </a>
+          <Link to={"/accounts/login"}>
+            <a
+              href="#"
+              className="flex items-center transition-all hover:text-primary"
+            >
+              <AiOutlineUser size={"24px"} />
+              <span className="ml-2 font-bold">Login</span>
+            </a>
+          </Link>
           <div className="mini-cart rounded-tr-md rounded-bl-md rounded-br-3xl rounded-tl-3xl">
             <a href="#">
               <AiOutlineShoppingCart size={"24px"} />

@@ -4,15 +4,14 @@ import Header from "./Components/Header";
 import HomePage from "./Components/Home";
 import ShopPage from "./Components/Shop/ShopPage";
 import Categories from "./Components/Shop/components/ListProducts/Categories";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import ProductDetail from "./Components/Shop/components/ProductDetail/ProductDetail";
 import AboutUs from "./Components/AboutUs";
 import Community from "./Components/Community";
 import Contactus from "./Components/ContactUs";
 import TestData from "./Components/TestData";
-
+import Login from "./Components/Home/Accounts/Login/login";
+import Register from "./Components/Home/Accounts/Register/register";
 function App() {
   return (
     <div className="relative App">
@@ -30,6 +29,8 @@ function App() {
             <Route path="/test" element={<TestData />} />
             <Route path="/community" element={<Community />} />
             <Route path="/contactUs" element={<Contactus />} />
+            <Route path="/accounts/login" element={<Login />} />
+            <Route path="/accounts/register" element={<Register />} />
             <Route
               path="*"
               element={
