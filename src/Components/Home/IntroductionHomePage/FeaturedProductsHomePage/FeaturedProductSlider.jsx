@@ -11,7 +11,7 @@ function FeaturedProductSlider() {
   var settings = {
     dots: true,
     speed: 400,
-    slidesToShow: 2,
+    slidesToShow: 6,
     slidesToScroll: 1,
   };
   const { categoryId } = useParams();
