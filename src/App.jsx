@@ -14,6 +14,11 @@ import TestData from "./Components/TestData";
 import ShoppingCard from "./Components/Shop/ShoppingCard/ShoppingCard";
 import Login from "./Components/Home/Accounts/Login/login";
 import Register from "./Components/Home/Accounts/Register/register";
+
+// redux
+import { Provider } from "react-redux";
+import { StoreCreator } from "redux";
+
 function App() {
   return (
     <div className="relative App">

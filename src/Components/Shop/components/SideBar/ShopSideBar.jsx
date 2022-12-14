@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import "./ShopSideBar.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { axiosClient } from "../../../../libraries/axioClient";
 function ShopSideBar() {
+  const { categoryId } = useParams();
+  console.log(categoryId);
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {
     axiosClient.get("/categories").then((response) => {
@@ -22,9 +24,20 @@ function ShopSideBar() {
         <ul className="toggle_list">
           {categories.map((category, index) => {
             return (
-              <li key={index}>
+              <li className="h-[30px]" key={index}>
                 <Link to={`/shop/${category._id}`}>
-                  <p>{category.name}</p>
+                  <div
+                    className={`flex ${
+                      categoryId === category._id ? "bg-slate-400" : ""
+                    } `}
+                  >
+                    <img
+                      className="w-[20px] mr-[10px]"
+                      src={category.imageURL}
+                      alt=""
+                    />
+                    <p>{category.name}</p>
+                  </div>
                 </Link>
               </li>
             );

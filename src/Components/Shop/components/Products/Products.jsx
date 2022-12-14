@@ -3,10 +3,11 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { axiosClient } from "../../../../libraries/axioClient";
 import ButtonAddToCard from "../../ShoppingCard/AddToCard";
+
 function Products() {
   const { categoryId } = useParams();
   const [products, setProducts] = React.useState([]);
-  const [cart, setCart] = React.useState([]);
+
   // get dữ liệu products
   React.useEffect(() => {
     if (categoryId) {
@@ -23,22 +24,14 @@ function Products() {
       });
     }
   }, [categoryId]);
-  function addToCart(id) {
-    const data = products.find((product) => {
-      return product.id === id;
-    });
-    console.log(data);
 
-    cart.push(data);
-    console.log(cart);
-  }
   return (
     <div className="container flex-1 mt-[-15px]">
       <div className="grid grid-cols-4">
         {products &&
           products.map((product, index) => {
             return (
-              <div className="product mb-9 mx-4 border" key={index}>
+              <div className="product mb-9 mx-2 border" key={index}>
                 <div className="product-image relative">
                   <Link to={`/shop/${product.categoryId}/${product._id}`}>
                     <img src={product.imageProduct} alt="" />
@@ -82,9 +75,7 @@ function Products() {
                 </Link>
                 <div className="w-[100%]">
                   <ButtonAddToCard
-                    addToCart={() => {
-                      addToCart(product.id);
-                    }}
+                    product={{ product: product, quantity: 1 }}
                   />
                 </div>
               </div>

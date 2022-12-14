@@ -31,8 +31,12 @@ function Categories() {
           </span>
           <span className="mx-2">/</span>
           <span className="text-black">Trang 1 của 1</span>
+          <div className="mt-[20px] font-bold text-2xl">
+            <h1>{category.name}</h1>
+          </div>
           <p className="border-b border-primary my-5"></p>
         </div>
+
         <div className="flex">
           <>
             <ShopSideBar />

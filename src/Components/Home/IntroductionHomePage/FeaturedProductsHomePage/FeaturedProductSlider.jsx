@@ -11,8 +11,8 @@ function FeaturedProductSlider() {
   var settings = {
     dots: true,
     speed: 400,
-    slidesToShow: 6,
-    slidesToScroll: 1,
+    slidesToShow: 5,
+    slidesToScroll: 2,
   };
   const { categoryId } = useParams();
   const [products, setProducts] = React.useState([]);
@@ -35,10 +35,10 @@ function FeaturedProductSlider() {
     <div className="container">
       <Slider {...settings}>
         {products &&
-          products.map((product, index) => {
+          products.map((product) => {
             return (
-              <div className="products-featured">
-                <div className="gallery-cell" key={index}>
+              <div className="products-featured" key={product._id}>
+                <div className="gallery-cell w-[90%]">
                   <div className="product-image relative">
                     <Link to={`/shop/${product.categoryId}/${product._id}`}>
                       <img
@@ -82,7 +82,9 @@ function FeaturedProductSlider() {
                     </div>
                   </a>
                   <>
-                    <ButtonAddToCard />
+                    <ButtonAddToCard
+                      product={{ product: product, quantity: 1 }}
+                    />
                   </>
                 </div>
               </div>
