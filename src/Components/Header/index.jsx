@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./headerStyle.css";
+import { useCarts } from "../../hooks/useCart";
 import {
   AiOutlineUser,
   AiOutlineShoppingCart,
@@ -10,6 +11,10 @@ import CloudMarketLogo from "../../assets/header/logo/cloud-market.jpg";
 import Navbar from "./Navi/Navbar";
 
 function Header() {
+  const { items } = useCarts((state) => state);
+  const quantityCart = items.reduce((total, item) => {
+    return total + item.quantity;
+  }, 0);
   return (
     <div className="fixed top-0 left-0 right-0 z-10">
       <div className="flex items-center justify-between gap-3 px-3 pt-2 bg-white containerHeader">
@@ -42,7 +47,7 @@ function Header() {
           </Link>
           <Link to="/shop/card">
             <div className="mini-cart rounded-tr-md rounded-bl-md rounded-br-3xl rounded-tl-3xl">
-              <span className="mr-2">0</span>
+              <span className="mr-2">{quantityCart}</span>
               <AiOutlineShoppingCart size={"20px"} />
             </div>
           </Link>
