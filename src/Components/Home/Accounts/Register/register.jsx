@@ -1,5 +1,5 @@
 import React from "react";
-import BtnAccounts from "../BtnAccounts/btnAccounts";
+// import BtnAccounts from "../BtnAccounts/btnAccounts";
 import "./signUp.css";
 import {
   Table,
@@ -12,6 +12,11 @@ import {
   Space,
   Modal,
 } from "antd";
+import {
+  CloseOutlined,
+  FacebookOutlined,
+  GoogleOutlined,
+} from "@ant-design/icons";
 import FormItem from "antd/es/form/FormItem";
 import { Link } from "react-router-dom";
 
@@ -26,21 +31,38 @@ const Register = () => {
           {/* <CloseOutlined
             style={{ color: "red", fontSize: "25px", cursor: "pointer" }}
           /> */}
-          <div className="text-left text-[45px]">Customer Login</div>
+          <div className="text-left text-[45px]">Customer Register</div>
           <hr className="my-4 text-gray-300" />
           <div className="max-w-[500px] mx-auto">
+            <div className="">
+              <div className="cursor-pointer text-left h-[50px] mb-2 leading-[50px] text-[#fff] bg-[#3b5998] hover:opacity-90">
+                <span className="px-3 text-[20px]">Login with FaceBook</span>
+                <i className="float-right h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19]">
+                  <FacebookOutlined />
+                </i>
+              </div>
+              <div className="cursor-pointer text-left h-[50px] leading-[50px] text-[#fff] bg-[#dd4b39] hover:opacity-90">
+                <span className=" px-3 text-[20px] ">Login with Google</span>
+                <i className="float-right  h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19] ">
+                  <GoogleOutlined />
+                </i>
+              </div>
+            </div>
+            <div className="my-10 relative">
+              <hr className="text-[#beadad]" />
+              <div className="absolute top-[-11px] left-[250px] px-[15px] bg-white">
+                Or
+              </div>
+            </div>
             <Form
               form={createForm} //2.1
-              name="basic"
-              labelCol={{ span: 8 }}
-              wrapperCol={{ span: 16 }}
-              initialValues={{ remember: true }}
-              autoComplete="on"
+              // name="basic"
+              // autoComplete="on"
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
             >
-              <BtnAccounts />
-              <BtnAccounts color="#dd4b39" icon="google" text="Google" />
+              {/* <BtnAccounts />
+              <BtnAccounts color="#dd4b39" icon="google" text="Google" /> */}
               <div className="mb-4 mt-4">
                 <div className="">
                   <Form.Item
@@ -165,9 +187,8 @@ const Register = () => {
                     />
                   </Form.Item>
                 </div>
-
                 {/* </div> */}
-                <div className="flex flex-col">
+                <div className="flex items-center justify-between mt-4">
                   <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button
                       type="primary"
@@ -179,9 +200,9 @@ const Register = () => {
                   </Form.Item>
                   <div className="flex justify-end">
                     <Link to={"/accounts/login"}>
-                      <a href="#" className="ml-2">
+                      <div href="#" className="ml-2 ">
                         Already Have an Account? Login!
-                      </a>
+                      </div>
                     </Link>
                   </div>
                 </div>

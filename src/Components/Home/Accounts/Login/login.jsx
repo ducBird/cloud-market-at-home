@@ -1,20 +1,14 @@
 import React from "react";
 import "./login.css";
-import {
-  Table,
-  Button,
-  Checkbox,
-  Form,
-  Input,
-  message,
-  Popconfirm,
-  Space,
-  Modal,
-} from "antd";
-import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
+
+import { Button, Form, Input } from "antd";
+import { Link } from "react-router-dom";
 import { ArrowRightOutlined } from "@ant-design/icons";
-import BtnAccounts from "../BtnAccounts/btnAccounts";
-import FormItem from "antd/es/form/FormItem";
+import {
+  CloseOutlined,
+  FacebookOutlined,
+  GoogleOutlined,
+} from "@ant-design/icons";
 const Login = () => {
   const [createForm] = Form.useForm();
   const onFinish = () => {};
@@ -29,13 +23,29 @@ const Login = () => {
           <div className="text-left text-[45px]">Customer Login</div>
           <hr className="my-4 text-gray-300" />
           <div className="max-w-[500px] mx-auto">
-            <BtnAccounts />
-            <BtnAccounts color="#dd4b39" icon="google" text="Google" />
+            <div className="">
+              <div className="cursor-pointer text-left h-[50px] mb-2 leading-[50px] text-[#fff] bg-[#3b5998] hover:opacity-90">
+                <span className="px-3 text-[20px]">Login with FaceBook</span>
+                <i className="float-right h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19]">
+                  <FacebookOutlined />
+                </i>
+              </div>
+              <div className="cursor-pointer text-left h-[50px] leading-[50px] text-[#fff] bg-[#dd4b39] hover:opacity-90">
+                <span className=" px-3 text-[20px] ">Login with Google</span>
+                <i className="float-right  h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19] ">
+                  <GoogleOutlined />
+                </i>
+              </div>
+            </div>
+            <div className="my-10 relative">
+              <hr className="text-[#beadad]" />
+              <div className="absolute top-[-11px] left-[250px] px-[15px] bg-white">
+                Or
+              </div>
+            </div>
             <Form
               form={createForm} //2.1
               name="basic"
-              labelCol={{ span: 8 }}
-              wrapperCol={{ span: 16 }}
               initialValues={{ remember: true }}
               autoComplete="on"
               onFinish={onFinish}
@@ -43,7 +53,7 @@ const Login = () => {
             >
               <div className="mb-4 mt-4">
                 <div className="">
-                  <div className="">
+                  <div className="w-[100%]">
                     <h2 className="text-xl text-primary ">Email</h2>
                     <Form.Item
                       // label="Email"
@@ -64,7 +74,7 @@ const Login = () => {
 
                   <div className="">
                     <h2 className="text-xl text-primary ">Password</h2>
-                    <FormItem
+                    <Form.Item
                       name="password"
                       rules={[
                         { required: true, message: "Chưa nhập mật khẩu!" },
@@ -77,9 +87,9 @@ const Login = () => {
                         type="password"
                         style={{ width: "100%", padding: "10px 5px" }}
                       />
-                    </FormItem>
+                    </Form.Item>
                     <em style={{ textAlign: "right", display: "block" }}>
-                      <a href="#" className="text-primary hover:text-green-800">
+                      <a href="#" className="text-primary hover:text-blue-500">
                         Forgot your password?
                       </a>
                     </em>
@@ -90,7 +100,7 @@ const Login = () => {
                       <Button
                         type="primary"
                         htmlType="submit"
-                        className="bg-primary text-white p-4 rounded-md transition-all py-5"
+                        className="flex bg-primary text-white rounded-md transition-all py-5 text-lg"
                       >
                         Đăng nhập
                       </Button>
@@ -98,10 +108,10 @@ const Login = () => {
                     <h2 className="flex items-center ">
                       New Customer?
                       <Link to={"/accounts/register"}>
-                        <a href="#" className="ml-2 ">
+                        <div className="ml-2 ">
                           Sign up
                           <ArrowRightOutlined size={""} />
-                        </a>
+                        </div>
                       </Link>
                     </h2>
                   </div>
