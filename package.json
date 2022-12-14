@@ -21,7 +21,8 @@
     "redux": "^4.2.0",
     "slick-carousel": "^1.8.1",
     "vite": "^3.2.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
