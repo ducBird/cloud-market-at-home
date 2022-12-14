@@ -52,12 +52,20 @@ function Navbar() {
             </Link>
             <BsFillCaretDownFill />
           </li>
-          <li className="li-nav">
+          <li className="relative li-nav li-nav-shop">
             <Link to={"/community"}>
               {/* Community */}
               Cộng Đồng
             </Link>
             <BsFillCaretDownFill />
+            <ul className="sub-nav-shop">
+              <li>
+                <Link to={"/community/recipes"}>Recipes</Link>
+              </li>
+              <li>
+                <Link to={"/community/vegetarian"}>Vegetarian Community</Link>
+              </li>
+            </ul>
           </li>
           <li className="li-nav">
             <Link to={"/contactUs"}>

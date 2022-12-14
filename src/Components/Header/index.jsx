@@ -35,15 +35,10 @@ function Header() {
         </div>
         <div className="flex items-center gap-10 w-[300px]">
           <Link to={"/accounts/login"}>
-            {/* <a
-              href="#"
-              className="flex items-center transition-all hover:text-primary"
-            > */}
             <div className="flex items-center transition-all hover:text-primary">
               <AiOutlineUser size={"24px"} />
               <span className="ml-2 font-bold">Login</span>
             </div>
-            {/* </a> */}
           </Link>
           <Link to="/shop/card">
             <div className="mini-cart rounded-tr-md rounded-bl-md rounded-br-3xl rounded-tl-3xl">

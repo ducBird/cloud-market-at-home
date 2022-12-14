@@ -14,6 +14,8 @@ import TestData from "./Components/TestData";
 import ShoppingCard from "./Components/Shop/ShoppingCard/ShoppingCard";
 import Login from "./Components/Home/Accounts/Login/login";
 import Register from "./Components/Home/Accounts/Register/register";
+import RecipesPage from "./Components/Community/Recipes/RecipesPage";
+import VegetarianPage from "./Components/Community/VegetarianCommunity/VegetarianPage";
 function App() {
   return (
     <div className="relative App">
@@ -35,6 +37,8 @@ function App() {
             <Route path="/contactUs" element={<Contactus />} />
             <Route path="/accounts/login" element={<Login />} />
             <Route path="/accounts/register" element={<Register />} />
+            <Route path="/community/recipes" element={<RecipesPage />} />
+            <Route path="/community/vegetarian" element={<VegetarianPage />} />
             <Route
               path="*"
               element={
