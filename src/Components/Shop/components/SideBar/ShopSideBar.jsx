@@ -2,7 +2,7 @@
 import React from "react";
 import "./ShopSideBar.css";
 import { Link, useParams } from "react-router-dom";
-import { axiosClient } from "../../../../libraries/axioClient";
+import { axiosClient } from "../../../../libraries/axiosClient";
 function ShopSideBar() {
   const { categoryId } = useParams();
   console.log(categoryId);

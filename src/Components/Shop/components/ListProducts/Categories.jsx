@@ -3,7 +3,7 @@ import React from "react";
 import ShopSideBar from "../SideBar/ShopSideBar";
 import { Link, useParams } from "react-router-dom";
 import Products from "../Products/Products";
-import { axiosClient } from "../../../../libraries/axioClient";
+import { axiosClient } from "../../../../libraries/axiosClient";
 
 function Categories() {
   const { categoryId } = useParams();

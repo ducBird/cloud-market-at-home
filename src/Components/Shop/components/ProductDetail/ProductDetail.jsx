@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { axiosClient } from "../../../../libraries/axioClient";
+import { axiosClient } from "../../../../libraries/axiosClient";
 import BreadcrumbProductDetail from "./BreadcrumbProductDetail";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import ButtonAddToCard from "../../ShoppingCard/AddToCard";

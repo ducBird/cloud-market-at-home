@@ -1,7 +1,7 @@
 import React from "react";
 import "./login.css";
 
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, ConfigProvider, message } from "antd";
 import { Link } from "react-router-dom";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import {
@@ -9,10 +9,35 @@ import {
   FacebookOutlined,
   GoogleOutlined,
 } from "@ant-design/icons";
+import { axiosClient } from "../../../../libraries/axiosClient";
+
 const Login = () => {
-  const [createForm] = Form.useForm();
-  const onFinish = () => {};
-  const onFinishFailed = () => {};
+  const [loginForm] = Form.useForm();
+
+  const onFinish = (values) => {
+    const { username, password } = values;
+    axiosClient
+      .post("/auth/login-jwt", { username, password })
+      .then((response) => {
+        window.location.href = "/";
+        // axiosClient
+        //   .get(`/auth/${response.data._id}`)
+        //   .then((res) => {
+        //     console.log(res.data);
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //   });
+      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          message.error("Đăng nhập thất bại!");
+        }
+      });
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <>
       <div className=" bg-white mx-auto">
@@ -20,18 +45,23 @@ const Login = () => {
           {/* <CloseOutlined
             style={{ color: "red", fontSize: "25px", cursor: "pointer" }}
           /> */}
-          <div className="text-left text-[45px]">Customer Login</div>
+          <div className="text-left text-[45px]">Đăng Nhập</div>
           <hr className="my-4 text-gray-300" />
           <div className="max-w-[500px] mx-auto">
+            {/* Button Login with Facebook or Google */}
             <div className="">
               <div className="cursor-pointer text-left h-[50px] mb-2 leading-[50px] text-[#fff] bg-[#3b5998] hover:opacity-90">
-                <span className="px-3 text-[20px]">Login with FaceBook</span>
+                <span className="px-3 text-[20px]">
+                  Đăng nhập với tài khoản Facebook
+                </span>
                 <i className="float-right h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19]">
                   <FacebookOutlined />
                 </i>
               </div>
               <div className="cursor-pointer text-left h-[50px] leading-[50px] text-[#fff] bg-[#dd4b39] hover:opacity-90">
-                <span className=" px-3 text-[20px] ">Login with Google</span>
+                <span className=" px-3 text-[20px] ">
+                  Đăng nhập với tài khoản Google
+                </span>
                 <i className="float-right  h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19] ">
                   <GoogleOutlined />
                 </i>
@@ -44,8 +74,8 @@ const Login = () => {
               </div>
             </div>
             <Form
-              form={createForm} //2.1
-              name="basic"
+              form={loginForm}
+              name="login-form"
               initialValues={{ remember: true }}
               autoComplete="on"
               onFinish={onFinish}
@@ -57,7 +87,7 @@ const Login = () => {
                     <h2 className="text-xl text-primary ">Email</h2>
                     <Form.Item
                       // label="Email"
-                      name="email"
+                      name="username"
                       rules={[
                         { required: true, message: "Chưa nhập thư điện tử!" },
                         { type: "email", message: "Thư điện tử không đúng" },
@@ -67,7 +97,11 @@ const Login = () => {
                       <Input
                         className="outline-none border border-gray-400"
                         type="text"
-                        style={{ width: "100%", padding: "10px 5px" }}
+                        style={{
+                          width: "100%",
+                          padding: "10px 5px",
+                          fontSize: "18px",
+                        }}
                       />
                     </Form.Item>
                   </div>
@@ -78,14 +112,23 @@ const Login = () => {
                       name="password"
                       rules={[
                         { required: true, message: "Chưa nhập mật khẩu!" },
-                        { type: "password", message: "Mật khẩu không đúng" },
+                        {
+                          min: 5,
+                          max: 50,
+                          message: "Độ dài mật khẩu từ 5-50 kí tự",
+                        },
+                        // { type: "password", message: "Mật khẩu không đúng" },
                       ]}
                       hasFeedback
                     >
                       <Input
                         className="outline-none border border-gray-400"
                         type="password"
-                        style={{ width: "100%", padding: "10px 5px" }}
+                        style={{
+                          width: "100%",
+                          padding: "10px 5px",
+                          fontSize: "18px",
+                        }}
                       />
                     </Form.Item>
                     <em style={{ textAlign: "right", display: "block" }}>
@@ -97,13 +140,21 @@ const Login = () => {
                   {/* </div> */}
                   <div className="flex justify-between items-center">
                     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                      <Button
-                        type="primary"
-                        htmlType="submit"
-                        className="flex bg-primary text-white rounded-md transition-all py-5 text-lg"
+                      <ConfigProvider
+                        theme={{
+                          token: {
+                            colorPrimary: "#005745",
+                          },
+                        }}
                       >
-                        Đăng nhập
-                      </Button>
+                        <Button
+                          type="primary"
+                          htmlType="submit"
+                          className={`li-nav bg-primary text-lg px-8 py-5`}
+                        >
+                          Đăng nhập
+                        </Button>
+                      </ConfigProvider>
                     </Form.Item>
                     <h2 className="flex items-center ">
                       New Customer?

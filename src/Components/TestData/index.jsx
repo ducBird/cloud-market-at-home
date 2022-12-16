@@ -1,5 +1,5 @@
 import React from "react";
-import { axiosClient } from "../../libraries/axioClient";
+import { axiosClient } from "../../libraries/axiosClient";
 function TestData() {
   const [categories, setCategories] = React.useState([]);
   // get dữ liệu

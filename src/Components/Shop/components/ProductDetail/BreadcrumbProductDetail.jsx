@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { axiosClient } from "../../../../libraries/axioClient";
+import { axiosClient } from "../../../../libraries/axiosClient";
 function BreadcrumbProductDetail() {
   const { categoryId } = useParams();
   const { id } = useParams();

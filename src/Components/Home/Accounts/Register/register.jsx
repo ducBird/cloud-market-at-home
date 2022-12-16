@@ -1,17 +1,7 @@
 import React from "react";
 // import BtnAccounts from "../BtnAccounts/btnAccounts";
-import "./signUp.css";
-import {
-  Table,
-  Button,
-  Checkbox,
-  Form,
-  Input,
-  message,
-  Popconfirm,
-  Space,
-  Modal,
-} from "antd";
+import styles from "./register.module.css";
+import { Button, Form, Input, message, ConfigProvider } from "antd";
 import {
   CloseOutlined,
   FacebookOutlined,
@@ -19,10 +9,26 @@ import {
 } from "@ant-design/icons";
 import FormItem from "antd/es/form/FormItem";
 import { Link } from "react-router-dom";
+import { axiosClient } from "../../../../libraries/axiosClient";
 
 const Register = () => {
-  const [createForm] = Form.useForm();
-  const onFinish = () => {};
+  const [registerForm] = Form.useForm();
+  const onFinish = (values) => {
+    axiosClient
+      .post("/auth", values)
+      .then((response) => {
+        message.success(
+          "Tạo tài khoản thành công. Hãy tiếp tục với việc đăng nhập!"
+        );
+        registerForm.resetFields();
+      })
+      .catch((errors) => {
+        message.error(
+          "Tạo tài khoản không thành công!\nXin lỗi bạn chúng tôi sẽ cố khắc phục"
+        );
+        // console.log(errors);
+      });
+  };
   const onFinishFailed = () => {};
   return (
     <div>
@@ -31,18 +37,23 @@ const Register = () => {
           {/* <CloseOutlined
             style={{ color: "red", fontSize: "25px", cursor: "pointer" }}
           /> */}
-          <div className="text-left text-[45px]">Customer Register</div>
+          <div className="text-left text-[45px]">Đăng ký tài khoản</div>
           <hr className="my-4 text-gray-300" />
           <div className="max-w-[500px] mx-auto">
+            {/* Button Login with Facebook or Google */}
             <div className="">
               <div className="cursor-pointer text-left h-[50px] mb-2 leading-[50px] text-[#fff] bg-[#3b5998] hover:opacity-90">
-                <span className="px-3 text-[20px]">Login with FaceBook</span>
+                <span className="px-3 text-[20px]">
+                  Đăng nhập với tài khoản Facebook
+                </span>
                 <i className="float-right h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19]">
                   <FacebookOutlined />
                 </i>
               </div>
               <div className="cursor-pointer text-left h-[50px] leading-[50px] text-[#fff] bg-[#dd4b39] hover:opacity-90">
-                <span className=" px-3 text-[20px] ">Login with Google</span>
+                <span className=" px-3 text-[20px] ">
+                  Đăng nhập với tài khoản Google
+                </span>
                 <i className="float-right  h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19] ">
                   <GoogleOutlined />
                 </i>
@@ -55,8 +66,8 @@ const Register = () => {
               </div>
             </div>
             <Form
-              form={createForm} //2.1
-              // name="basic"
+              form={registerForm} //2.1
+              name="register-form"
               // autoComplete="on"
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
@@ -65,19 +76,21 @@ const Register = () => {
               <BtnAccounts color="#dd4b39" icon="google" text="Google" /> */}
               <div className="mb-4 mt-4">
                 <div className="">
+                  {/* Input FullName */}
                   <Form.Item
-                    name="firstName"
+                    name="fullName"
                     rules={[
                       {
                         required: true,
-                        message: "Please input your First Name!",
+                        message:
+                          "Hãy cho chúng tôi biết tên hoặc biệt danh của bạn!",
                       },
                     ]}
                     hasFeedback
                   >
                     <Input
                       className="outline-none border border-gray-400"
-                      placeholder="First Name"
+                      placeholder="Tên của bạn là gì?"
                       style={{
                         width: "100%",
                         padding: "10px 5px",
@@ -86,34 +99,12 @@ const Register = () => {
                     />
                   </Form.Item>
                 </div>
-
                 <div className="">
+                  {/* Input Email */}
                   <FormItem
-                    name="lastName"
+                    name="username"
                     rules={[
-                      {
-                        required: true,
-                        message: "Please input your Last Name!",
-                      },
-                    ]}
-                    hasFeedback
-                  >
-                    <Input
-                      className="outline-none border border-gray-400"
-                      placeholder="Last Name"
-                      style={{
-                        width: "100%",
-                        padding: "10px 5px",
-                        fontSize: "18px",
-                      }}
-                    />
-                  </FormItem>
-                </div>
-                <div className="">
-                  <FormItem
-                    name="email"
-                    rules={[
-                      { required: true, message: "Please input your Email" },
+                      { required: true, message: "Email không được để trống!" },
                       { type: "email", message: "Thư điện tử không đúng" },
                     ]}
                     hasFeedback
@@ -131,12 +122,18 @@ const Register = () => {
                   </FormItem>
                 </div>
                 <div>
+                  {/* Input Password */}
                   <Form.Item
                     name="password"
                     rules={[
                       {
                         required: true,
-                        message: "Please input your password!",
+                        message: "Hãy nhập mật khẩu cho tài khoản của bạn!",
+                      },
+                      {
+                        min: 5,
+                        max: 50,
+                        message: "Độ dài mật khẩu từ 5-50 kí tự",
                       },
                     ]}
                     hasFeedback
@@ -153,14 +150,15 @@ const Register = () => {
                   </Form.Item>
                 </div>
                 <div>
+                  {/* Confirm Password */}
                   <Form.Item
-                    name="confirm"
+                    name="confirmPassword"
                     dependencies={["password"]}
                     hasFeedback
                     rules={[
                       {
                         required: true,
-                        message: "Please confirm your password!",
+                        message: "Hãy xác nhận lại mật khẩu!",
                       },
                       ({ getFieldValue }) => ({
                         validator(_, value) {
@@ -168,9 +166,7 @@ const Register = () => {
                             return Promise.resolve();
                           }
                           return Promise.reject(
-                            new Error(
-                              "The two passwords that you entered do not match!"
-                            )
+                            new Error("Mật khẩu xác nhận không đúng!")
                           );
                         },
                       }),
@@ -187,20 +183,40 @@ const Register = () => {
                     />
                   </Form.Item>
                 </div>
-                {/* </div> */}
+                {/* Is Active */}
+                <Form.Item name="active" initialValue={true}></Form.Item>
+
+                {/* Roles */}
+                <Form.Item name="roles" initialValue={["customer"]}></Form.Item>
+
+                {/* Create Account */}
                 <div className="flex items-center justify-between mt-4">
+                  {/* Button Create Account */}
                   <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                    <Button
-                      type="primary"
-                      htmlType="submit"
-                      className="flex bg-primary text-white px-8 rounded-md transition-all py-5 text-lg"
+                    <ConfigProvider
+                      theme={{
+                        token: {
+                          colorPrimary: "#005745",
+                        },
+                      }}
                     >
-                      Create
-                    </Button>
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        className={`li-nav bg-primary text-lg px-8 py-5`}
+                      >
+                        Tạo tài khoản
+                      </Button>
+                    </ConfigProvider>
                   </Form.Item>
+
+                  {/* Already Have an Account? Login! */}
                   <div className="flex justify-end">
-                    <Link to={"/accounts/login"}>
-                      <div href="#" className="ml-2 ">
+                    <Link
+                      to={"/accounts/login"}
+                      className="text-primary font-medium px-3 py-1 transition-all ease-in duration-300 hover:bg-primary hover:li-nav hover:text-white hover:font-normal hover:px-6 hover:py-1"
+                    >
+                      <div href="#" className="ml-2">
                         Already Have an Account? Login!
                       </div>
                     </Link>

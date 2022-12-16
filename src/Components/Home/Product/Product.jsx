@@ -2,7 +2,7 @@ import React from "react";
 import Data from "./Data";
 import { Link } from "react-router-dom";
 import "./data.css";
-import { axiosClient } from "../../../libraries/axioClient";
+import { axiosClient } from "../../../libraries/axiosClient";
 const List = () => {
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {

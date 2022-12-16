@@ -3,7 +3,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import "./navbar.css";
-import { axiosClient } from "../../../libraries/axioClient";
+import { axiosClient } from "../../../libraries/axiosClient";
 function Navbar() {
   const { categoryId } = useParams();
   const [categories, setCategories] = React.useState([]);

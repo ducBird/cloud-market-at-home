@@ -4,7 +4,7 @@ import "./FeatureProduct.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { axiosClient } from "../../../../libraries/axioClient";
+import { axiosClient } from "../../../../libraries/axiosClient";
 import { Link, useParams } from "react-router-dom";
 import ButtonAddToCard from "../../../Shop/ShoppingCard/AddToCard";
 function FeaturedProductSlider() {
