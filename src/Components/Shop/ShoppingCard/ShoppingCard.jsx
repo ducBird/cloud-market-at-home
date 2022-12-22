@@ -1,11 +1,24 @@
 import React from "react";
 import { useCarts } from "../../../hooks/useCart";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import numeral from "numeral";
 function ShoppingCard() {
   const { items, increase, decrease, remove } = useCarts((state) => state);
+  const btnRef = React.useRef(null);
   const totalCart = items.reduce((total, item) => {
     return total + item.product.total * item.quantity;
   }, 0);
+
+  // xử lý button Thanh toán
+  React.useEffect(() => {
+    const btn = btnRef.current;
+    if (items.length === 0) {
+      btn.disabled = true;
+    } else {
+      btn.disabled = false;
+    }
+  }, [items]);
   return (
     <div className="shopCart">
       <div className="container">
@@ -31,7 +44,11 @@ function ShoppingCard() {
                       </div>
                     </div>
                     <div>
-                      <img src={productItemCart.product.imageProduct} alt="" />
+                      <img
+                        className="w-[300px] h-[300px]"
+                        src={productItemCart.product.imageProduct}
+                        alt=""
+                      />
                     </div>
                     <div>
                       <p className="text-primary text-2xl font-bold">
@@ -47,7 +64,8 @@ function ShoppingCard() {
                               : "list-none text-black"
                           }
                         >
-                          {productItemCart.product.price}
+                          {numeral(productItemCart.product.price).format("0,0")}{" "}
+                          đ
                         </span>
                         {/* giá khuyễn mãi */}
                         <br />
@@ -67,7 +85,10 @@ function ShoppingCard() {
                               : "hidden"
                           }
                         >
-                          {productItemCart.product.total}
+                          {numeral(productItemCart.product.total).format(
+                            "0,0 "
+                          )}{" "}
+                          đ
                         </span>
                       </div>
                       <div className="purchase-details_quantity inline-block mr-[20px]">
@@ -117,7 +138,7 @@ function ShoppingCard() {
                   Tổng tiền:{" "}
                 </span>
                 <p className="text-right mr-[20px] w-[100%] inline text-2xl text-black font-bold">
-                  {totalCart} vnđ
+                  {numeral(totalCart).format("0,0 ")} đ
                 </p>
               </div>
               <div className="mt-[20px]">
@@ -129,9 +150,14 @@ function ShoppingCard() {
                 ></textarea>
               </div>
               <div className="text-center mt-[20px]">
-                <button className="border p-[10px] bg-primary text-white w-[150px] rounded-md">
-                  Đặt hàng
-                </button>
+                <Link to="/shop/order">
+                  <button
+                    className="border p-[10px] bg-primary text-white w-[150px] rounded-md"
+                    ref={btnRef}
+                  >
+                    Thanh toán
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

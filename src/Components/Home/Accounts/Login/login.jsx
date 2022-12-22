@@ -102,6 +102,7 @@ const Login = () => {
                           padding: "10px 5px",
                           fontSize: "18px",
                         }}
+                        placeholder="Nhập email hoặc số điện thoại"
                       />
                     </Form.Item>
                   </div>
@@ -129,6 +130,7 @@ const Login = () => {
                           padding: "10px 5px",
                           fontSize: "18px",
                         }}
+                        placeholder="Nhập mật khẩu"
                       />
                     </Form.Item>
                     <em style={{ textAlign: "right", display: "block" }}>

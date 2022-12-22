@@ -87,6 +87,7 @@ const Register = () => {
                       },
                     ]}
                     hasFeedback
+                    className="pb-3 "
                   >
                     <Input
                       className="outline-none border border-gray-400"
@@ -108,6 +109,7 @@ const Register = () => {
                       { type: "email", message: "Thư điện tử không đúng" },
                     ]}
                     hasFeedback
+                    className="pb-3 "
                   >
                     <Input
                       className="outline-none border border-gray-400"
@@ -137,6 +139,7 @@ const Register = () => {
                       },
                     ]}
                     hasFeedback
+                    className="pb-3 "
                   >
                     <Input.Password
                       className="outline-none border border-gray-400"
@@ -171,6 +174,7 @@ const Register = () => {
                         },
                       }),
                     ]}
+                    className="pb-3 "
                   >
                     <Input.Password
                       className="outline-none border border-gray-400"

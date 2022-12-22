@@ -73,12 +73,6 @@ function Navbar() {
               Liên Hệ
             </Link>
           </li>
-          <li className="li-nav">
-            <Link to={"/test"}>
-              {/* databatest */}
-              Test
-            </Link>
-          </li>
         </ul>
       </nav>
     </>
