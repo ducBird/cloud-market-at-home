@@ -136,7 +136,7 @@ function ShopOrder() {
                   hasFeedback
                   className="pb-3"
                   label="Địa chỉ"
-                  name="address"
+                  name="shippingAddress"
                   rules={[
                     {
                       required: true,

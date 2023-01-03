@@ -4,11 +4,7 @@ import "./login.css";
 import { Button, Form, Input, ConfigProvider, message } from "antd";
 import { Link } from "react-router-dom";
 import { ArrowRightOutlined } from "@ant-design/icons";
-import {
-  CloseOutlined,
-  FacebookOutlined,
-  GoogleOutlined,
-} from "@ant-design/icons";
+import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
 import { axiosClient } from "../../../../libraries/axiosClient";
 
 const Login = () => {
