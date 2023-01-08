@@ -9,32 +9,53 @@ import {
 } from "react-icons/ai";
 import CloudMarketLogo from "../../assets/header/logo/cloud-market.jpg";
 import Navbar from "./Navi/Navbar";
+import { useUser } from "../../hooks/useUser";
+import { API_URL } from "../../constants/URLS";
 
 function Header() {
   const { items } = useCarts((state) => state);
+  const { users } = useUser((state) => state);
   const quantityCart = items.reduce((total, item) => {
     return total + item.quantity;
   }, 0);
 
   const LoginButton = (
-    <button className="ml-2 font-bold w-[100%]">Đăng nhập</button>
+    <div className="flex items-center transition-all hover:text-primary">
+      <AiOutlineUser size={"24px"} width="30%" />
+      <button className="ml-2 font-bold w-[100%]">Đăng nhập</button>
+    </div>
   );
 
   const LogoutButton = (
-    <button
-      className="ml-2 font-bold w-[100%]"
-      onClick={() => {
-        localStorage.clear();
-        window.location.href = "accounts/login";
-      }}
-    >
-      Đăng xuất
-    </button>
+    <div className="c-user flex items-center gap-1 text-primary nav-user p-2">
+      {/* <AiOutlineUser /> */}
+      <div className="w-[20px] h-[20px]">
+        <img
+          src={`${API_URL}${users.avatar}`}
+          alt="avatar"
+          className="w-[100%] h-[100%] rounded-full"
+        />
+      </div>
+      <span>{users.fullName}</span>
+      <ul className="sub-c-user">
+        <li>{`Tài khoản của ${users.lastName}`}</li>
+        <li>
+          <button
+            onClick={() => {
+              localStorage.clear();
+              window.location.href = "accounts/login";
+            }}
+          >
+            Đăng xuất
+          </button>
+        </li>
+      </ul>
+    </div>
   );
 
   return (
     <div className="fixed top-0 left-0 right-0 z-10">
-      <div className="flex items-center justify-between gap-3 px-3 pt-2 bg-white containerHeader">
+      <div className="flex items-center px-3 pt-2 justify-between bg-white containerHeader">
         <div className="flex items-center flex-1 gap-5">
           {/* Logo */}
           <a href="http://localhost:3000/">
@@ -58,15 +79,10 @@ function Header() {
             />
           </div>
         </div>
-        <div className="flex items-center gap-10 w-[300px]">
-          {/* Button Login */}
+        <div className="flex items-center gap-5">
+          {/* Button Login-Logout */}
           <Link to={"/accounts/login"}>
-            <div className="flex items-center transition-all hover:text-primary">
-              <AiOutlineUser size={"24px"} width="30%" />
-              {window.localStorage.getItem("token")
-                ? LogoutButton
-                : LoginButton}
-            </div>
+            {window.localStorage.getItem("token") ? LogoutButton : LoginButton}
           </Link>
 
           {/* Button Shopping Cart */}

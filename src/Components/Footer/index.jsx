@@ -5,7 +5,7 @@ import { BsFacebook, BsInstagram } from "react-icons/bs";
 function Footer() {
   return (
     <>
-      <div className="p-5 mt-5 text-white container-footer bg-primary relative top-[10rem]">
+      <div className="w-[100%] p-5 mt-5 text-white container-footer bg-primary">
         <div className="content-footer">
           <div className="main-menu">
             <h5>Thực Đơn Chính</h5>
