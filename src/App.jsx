@@ -20,12 +20,12 @@ import CheckOrder from "./Components/Shop/CheckOrder";
 import HistoryOrder from "./Components/HistoryOrder";
 function App() {
   return (
-    <div className="relative App">
+    <div className="App">
       <BrowserRouter>
         <header>
           <Header />
         </header>
-        <section className="relative top-[130px]">
+        <section className="relative w-[100%] top-[130px]">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
@@ -56,10 +56,10 @@ function App() {
               }
             />
           </Routes>
-        </section>
-        <footer>
+          {/* <footer> */}
           <Footer />
-        </footer>
+          {/* </footer> */}
+        </section>
       </BrowserRouter>
     </div>
   );

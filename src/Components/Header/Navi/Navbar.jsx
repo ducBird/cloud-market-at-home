@@ -50,7 +50,6 @@ function Navbar() {
               {/* About Us */}
               Về Chúng Tôi
             </Link>
-            <BsFillCaretDownFill />
           </li>
           <li className="relative li-nav li-nav-shop">
             <Link to={"/community"}>

@@ -45,7 +45,6 @@ function ShopOrder() {
         message.success("thanh toán thành công ❤");
         // reset dữ liệu đã nhập ở form nhập
         createForm.resetFields();
-
         // load lại form
         setRefresh((pre) => pre + 1);
       })

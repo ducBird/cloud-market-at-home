@@ -6,24 +6,27 @@ import { Link } from "react-router-dom";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
 import { axiosClient } from "../../../../libraries/axiosClient";
+import { useUser } from "../../../../hooks/useUser";
 
 const Login = () => {
   const [loginForm] = Form.useForm();
+  const { addUser } = useUser((state) => state);
 
   const onFinish = (values) => {
-    const { username, password } = values;
+    const { email, password } = values;
     axiosClient
-      .post("/auth/login-jwt", { username, password })
+      .post("/customers/login-jwt", { email, password })
       .then((response) => {
-        window.location.href = "/";
-        // axiosClient
-        //   .get(`/auth/${response.data._id}`)
-        //   .then((res) => {
-        //     console.log(res.data);
-        //   })
-        //   .catch((err) => {
-        //     console.log(err);
-        //   });
+        axiosClient
+          .get(`/customers/${response.data._id}`)
+          .then((res) => {
+            // console.log(res.data);
+            addUser(res.data);
+            window.location.href = "/";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         if (err.response.status === 401) {
@@ -83,7 +86,7 @@ const Login = () => {
                     <h2 className="text-xl text-primary ">Email</h2>
                     <Form.Item
                       // label="Email"
-                      name="username"
+                      name="email"
                       rules={[
                         { required: true, message: "Chưa nhập thư điện tử!" },
                         { type: "email", message: "Thư điện tử không đúng" },
