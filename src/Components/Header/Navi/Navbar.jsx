@@ -72,6 +72,12 @@ function Navbar() {
               Liên Hệ
             </Link>
           </li>
+          <li className="li-nav">
+            <Link to={"/history-orders"}>
+              {/* Check order */}
+              Lịch sử đơn hàng
+            </Link>
+          </li>
         </ul>
       </nav>
     </>

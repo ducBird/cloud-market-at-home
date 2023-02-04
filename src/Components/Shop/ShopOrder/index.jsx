@@ -4,7 +4,6 @@ import { useCarts } from "../../../hooks/useCart";
 import { Button, Radio, Form, Input, Space, message } from "antd";
 import { Link } from "react-router-dom";
 import numeral from "numeral";
-import axios from "axios";
 import { axiosClient } from "../../../libraries/axiosClient";
 
 function ShopOrder() {
@@ -39,7 +38,7 @@ function ShopOrder() {
       values.orderDetails.push(orderDetail);
     });
 
-    console.log(values.orderDetails);
+    //console.log(values.orderDetails);
     axiosClient
       .post("/orders", values, initialValueOrder)
       .then((response) => {
@@ -189,7 +188,6 @@ function ShopOrder() {
             </div>
           </Form>
         </div>
-
         <div className="mt-5 ml-5 text-primary font-bold">
           Danh sách sản phẩm
         </div>

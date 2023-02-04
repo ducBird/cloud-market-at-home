@@ -16,6 +16,8 @@ import Register from "./Components/Home/Accounts/Register/register";
 import RecipesPage from "./Components/Community/Recipes/RecipesPage";
 import VegetarianPage from "./Components/Community/VegetarianCommunity/VegetarianPage";
 import ShopOrder from "./Components/Shop/ShopOrder";
+import CheckOrder from "./Components/Shop/CheckOrder";
+import HistoryOrder from "./Components/HistoryOrder";
 function App() {
   return (
     <div className="App">
@@ -35,6 +37,11 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/community" element={<Community />} />
             <Route path="/contactUs" element={<Contactus />} />
+            <Route path="/history-orders" element={<CheckOrder />} />
+            <Route
+              path="/history-orders/order-:id"
+              element={<HistoryOrder />}
+            />
             <Route path="/accounts/login" element={<Login />} />
             <Route path="/accounts/register" element={<Register />} />
             <Route path="/community/recipes" element={<RecipesPage />} />
