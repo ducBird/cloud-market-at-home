@@ -37,6 +37,10 @@ const Login = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  const google = () => {
+    window.open("http://localhost:9000/customers/auth/google", "_self");
+  };
   return (
     <>
       <div className=" bg-white mx-auto">
@@ -49,22 +53,25 @@ const Login = () => {
           <div className="max-w-[500px] mx-auto">
             {/* Button Login with Facebook or Google */}
             <div className="">
-              <div className="cursor-pointer text-left h-[50px] mb-2 leading-[50px] text-[#fff] bg-[#3b5998] hover:opacity-90">
+              <button className="cursor-pointer text-left h-[50px] mb-2 leading-[50px] text-[#fff] bg-[#3b5998] hover:opacity-90">
                 <span className="px-3 text-[20px]">
                   Đăng nhập với tài khoản Facebook
                 </span>
                 <i className="float-right h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19]">
                   <FacebookOutlined />
                 </i>
-              </div>
-              <div className="cursor-pointer text-left h-[50px] leading-[50px] text-[#fff] bg-[#dd4b39] hover:opacity-90">
+              </button>
+              <button
+                onClick={google}
+                className="cursor-pointer text-left h-[50px] leading-[50px] text-[#fff] bg-[#dd4b39] hover:opacity-90"
+              >
                 <span className=" px-3 text-[20px] ">
                   Đăng nhập với tài khoản Google
                 </span>
                 <i className="float-right  h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19] ">
                   <GoogleOutlined />
                 </i>
-              </div>
+              </button>
             </div>
             <div className="my-10 relative">
               <hr className="text-[#beadad]" />
