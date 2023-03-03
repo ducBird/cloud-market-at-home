@@ -58,6 +58,9 @@ function ShopOrder() {
   const onFinishFailed = (errors) => {
     console.log("💣", errors);
   };
+  const payWithAccount = () => {
+    console.log("pay");
+  };
   return (
     <div className="container">
       <div className="logo">
@@ -87,6 +90,7 @@ function ShopOrder() {
               <span className="text-primary">Đăng nhập</span>
             </Link>
           </div>
+          {/* FORM */}
           <Form
             form={createForm}
             name="create-form"
@@ -188,50 +192,50 @@ function ShopOrder() {
         <div className="mt-5 ml-5 text-primary font-bold">
           Danh sách sản phẩm
         </div>
-        <div class="flex flex-col">
-          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-              <div class="overflow-hidden">
-                <table class="min-w-full">
-                  <thead class="border-b">
+        <div className="flex flex-col">
+          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="overflow-hidden">
+                <table className="min-w-full">
+                  <thead className="border-b">
                     <tr>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                       >
                         Sản phẩm
                       </th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                       >
                         Đơn giá
                       </th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                       >
                         Số lượng
                       </th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                       >
                         Thành tiền
                       </th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                       ></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b"></tr>
+                    <tr className="border-b"></tr>
                     {items &&
                       items.map((item) => {
                         return (
-                          <tr class="bg-white" key={item.product._id}>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          <tr className="bg-white" key={item.product._id}>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                               <div className="flex">
                                 <div className="baner-holder w-[50px]">
                                   <div
@@ -254,7 +258,7 @@ function ShopOrder() {
                                 </div>
                               </div>
                             </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                               <div className="inline">
                                 <p
                                   className={
@@ -269,12 +273,12 @@ function ShopOrder() {
                                 </p>
                               </div>
                             </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                               <div className="inline">
                                 <p>{item.quantity}</p>
                               </div>
                             </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                               <div className="inline">
                                 <p>
                                   {item.quantity * item.product.discount
@@ -283,7 +287,7 @@ function ShopOrder() {
                                 </p>
                               </div>
                             </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                               <div className="inline">
                                 <button
                                   className="text-red-600"
