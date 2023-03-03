@@ -7,7 +7,6 @@ import {
   FacebookOutlined,
   GoogleOutlined,
 } from "@ant-design/icons";
-import FormItem from "antd/es/form/FormItem";
 import { Link } from "react-router-dom";
 import { axiosClient } from "../../../../libraries/axiosClient";
 
@@ -15,18 +14,22 @@ const Register = () => {
   const [registerForm] = Form.useForm();
   const onFinish = (values) => {
     axiosClient
-      .post("/auth", values)
+      .post("/customers", values)
       .then((response) => {
+        // console.log(response);
         message.success(
           "Tạo tài khoản thành công. Hãy tiếp tục với việc đăng nhập!"
         );
         registerForm.resetFields();
       })
       .catch((errors) => {
-        message.error(
-          "Tạo tài khoản không thành công!\nXin lỗi bạn chúng tôi sẽ cố khắc phục"
-        );
-        // console.log(errors);
+        console.log(errors);
+        if (errors.response.status === 406)
+          message.error(errors.response.data.msg);
+        else
+          message.error(
+            "Tạo tài khoản không thành công!\nXin lỗi bạn chúng tôi sẽ cố khắc phục"
+          );
       });
   };
   const onFinishFailed = () => {};
@@ -75,123 +78,140 @@ const Register = () => {
               {/* <BtnAccounts />
               <BtnAccounts color="#dd4b39" icon="google" text="Google" /> */}
               <div className="mb-4 mt-4">
-                <div className="">
-                  {/* Input FullName */}
-                  <Form.Item
-                    name="fullName"
-                    rules={[
-                      {
-                        required: true,
-                        message:
-                          "Hãy cho chúng tôi biết tên hoặc biệt danh của bạn!",
+                {/* Input FirstName */}
+                <Form.Item
+                  name="firstName"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Hãy cho chúng tôi biết họ của bạn!",
+                    },
+                  ]}
+                  hasFeedback
+                  className="pb-3 "
+                >
+                  <Input
+                    className="outline-none border border-gray-400"
+                    placeholder="Họ của bạn là gì?"
+                    style={{
+                      width: "100%",
+                      padding: "10px 5px",
+                      fontSize: "18px",
+                    }}
+                  />
+                </Form.Item>
+
+                {/* Input LastName */}
+                <Form.Item
+                  name="lastName"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Hãy cho chúng tôi biết tên của bạn!",
+                    },
+                  ]}
+                  hasFeedback
+                  className="pb-3 "
+                >
+                  <Input
+                    className="outline-none border border-gray-400"
+                    placeholder="Tên của bạn là gì?"
+                    style={{
+                      width: "100%",
+                      padding: "10px 5px",
+                      fontSize: "18px",
+                    }}
+                  />
+                </Form.Item>
+
+                {/* Input Email */}
+                <Form.Item
+                  name="email"
+                  rules={[
+                    { required: true, message: "Email không được để trống!" },
+                    { type: "email", message: "Thư điện tử không đúng" },
+                  ]}
+                  hasFeedback
+                  className="pb-3 "
+                >
+                  <Input
+                    className="outline-none border border-gray-400"
+                    placeholder="Email"
+                    type="email"
+                    style={{
+                      width: "100%",
+                      padding: "10px 5px",
+                      fontSize: "18px",
+                    }}
+                  />
+                </Form.Item>
+
+                {/* Input Password */}
+                <Form.Item
+                  name="password"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Hãy nhập mật khẩu cho tài khoản của bạn!",
+                    },
+                    {
+                      min: 5,
+                      max: 50,
+                      message: "Độ dài mật khẩu từ 5-50 kí tự",
+                    },
+                  ]}
+                  hasFeedback
+                  className="pb-3 "
+                >
+                  <Input.Password
+                    className="outline-none border border-gray-400"
+                    placeholder="Password"
+                    style={{
+                      width: "100%",
+                      padding: "10px 5px",
+                      fontSize: "18px",
+                    }}
+                  />
+                </Form.Item>
+
+                {/* Confirm Password */}
+                <Form.Item
+                  name="confirmPassword"
+                  dependencies={["password"]}
+                  hasFeedback
+                  rules={[
+                    {
+                      required: true,
+                      message: "Hãy xác nhận lại mật khẩu!",
+                    },
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (!value || getFieldValue("password") === value) {
+                          return Promise.resolve();
+                        }
+                        return Promise.reject(
+                          new Error("Mật khẩu xác nhận không đúng!")
+                        );
                       },
-                    ]}
-                    hasFeedback
-                    className="pb-3 "
-                  >
-                    <Input
-                      className="outline-none border border-gray-400"
-                      placeholder="Tên của bạn là gì?"
-                      style={{
-                        width: "100%",
-                        padding: "10px 5px",
-                        fontSize: "18px",
-                      }}
-                    />
-                  </Form.Item>
-                </div>
-                <div className="">
-                  {/* Input Email */}
-                  <FormItem
-                    name="username"
-                    rules={[
-                      { required: true, message: "Email không được để trống!" },
-                      { type: "email", message: "Thư điện tử không đúng" },
-                    ]}
-                    hasFeedback
-                    className="pb-3 "
-                  >
-                    <Input
-                      className="outline-none border border-gray-400"
-                      placeholder="Email"
-                      type="email"
-                      style={{
-                        width: "100%",
-                        padding: "10px 5px",
-                        fontSize: "18px",
-                      }}
-                    />
-                  </FormItem>
-                </div>
-                <div>
-                  {/* Input Password */}
-                  <Form.Item
-                    name="password"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Hãy nhập mật khẩu cho tài khoản của bạn!",
-                      },
-                      {
-                        min: 5,
-                        max: 50,
-                        message: "Độ dài mật khẩu từ 5-50 kí tự",
-                      },
-                    ]}
-                    hasFeedback
-                    className="pb-3 "
-                  >
-                    <Input.Password
-                      className="outline-none border border-gray-400"
-                      placeholder="Password"
-                      style={{
-                        width: "100%",
-                        padding: "10px 5px",
-                        fontSize: "18px",
-                      }}
-                    />
-                  </Form.Item>
-                </div>
-                <div>
-                  {/* Confirm Password */}
-                  <Form.Item
-                    name="confirmPassword"
-                    dependencies={["password"]}
-                    hasFeedback
-                    rules={[
-                      {
-                        required: true,
-                        message: "Hãy xác nhận lại mật khẩu!",
-                      },
-                      ({ getFieldValue }) => ({
-                        validator(_, value) {
-                          if (!value || getFieldValue("password") === value) {
-                            return Promise.resolve();
-                          }
-                          return Promise.reject(
-                            new Error("Mật khẩu xác nhận không đúng!")
-                          );
-                        },
-                      }),
-                    ]}
-                    className="pb-3 "
-                  >
-                    <Input.Password
-                      className="outline-none border border-gray-400"
-                      placeholder="Confirm password"
-                      style={{
-                        width: "100%",
-                        padding: "10px 5px",
-                        fontSize: "18px",
-                      }}
-                    />
-                  </Form.Item>
-                </div>
+                    }),
+                  ]}
+                  className="pb-3 "
+                >
+                  <Input.Password
+                    className="outline-none border border-gray-400"
+                    placeholder="Confirm password"
+                    style={{
+                      width: "100%",
+                      padding: "10px 5px",
+                      fontSize: "18px",
+                    }}
+                  />
+                </Form.Item>
                 {/* Is Active */}
-                <Form.Item name="active" initialValue={true}></Form.Item>
+                {/* <Form.Item name="active" initialValue={true}></Form.Item> */}
 
                 {/* Roles */}
-                <Form.Item name="roles" initialValue={["customer"]}></Form.Item>
+                {/* <Form.Item name="roles" initialValue={["customer"]}></Form.Item> */}
 
                 {/* Create Account */}
                 <div className="flex items-center justify-between mt-4">
@@ -221,7 +241,7 @@ const Register = () => {
                       className="text-primary font-medium px-3 py-1 transition-all ease-in duration-300 hover:bg-primary hover:li-nav hover:text-white hover:font-normal hover:px-6 hover:py-1"
                     >
                       <div href="#" className="ml-2">
-                        Already Have an Account? Login!
+                        Bạn đã có tài khoản? Hãy đăng nhập!
                       </div>
                     </Link>
                   </div>

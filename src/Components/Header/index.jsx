@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./headerStyle.css";
 import { useCarts } from "../../hooks/useCart";
@@ -11,6 +11,7 @@ import CloudMarketLogo from "../../assets/header/logo/cloud-market.jpg";
 import Navbar from "./Navi/Navbar";
 import { useUser } from "../../hooks/useUser";
 import { API_URL } from "../../constants/URLS";
+import axios from "axios";
 
 function Header() {
   const { items } = useCarts((state) => state);
@@ -18,6 +19,12 @@ function Header() {
   const quantityCart = items.reduce((total, item) => {
     return total + item.quantity;
   }, 0);
+
+  const logout = async () => {
+    localStorage.clear();
+    window.open("http://localhost:9000/customers/logout", "_self");
+    // window.location.href = "accounts/login";
+  };
 
   const LoginButton = (
     <div className="flex items-center transition-all hover:text-primary">
@@ -31,7 +38,11 @@ function Header() {
       {/* <AiOutlineUser /> */}
       <div className="w-[20px] h-[20px]">
         <img
-          src={`${API_URL}${users.avatar}`}
+          src={
+            users.accountType === "email"
+              ? `${API_URL}${users.avatar}`
+              : `${users.avatar}`
+          }
           alt="avatar"
           className="w-[100%] h-[100%] rounded-full"
         />
@@ -40,14 +51,7 @@ function Header() {
       <ul className="sub-c-user">
         <li>{`Tài khoản của ${users.lastName}`}</li>
         <li>
-          <button
-            onClick={() => {
-              localStorage.clear();
-              window.location.href = "accounts/login";
-            }}
-          >
-            Đăng xuất
-          </button>
+          <button onClick={logout}>Đăng xuất</button>
         </li>
       </ul>
     </div>
@@ -82,7 +86,10 @@ function Header() {
         <div className="flex items-center gap-5">
           {/* Button Login-Logout */}
           <Link to={"/accounts/login"}>
-            {window.localStorage.getItem("token") ? LogoutButton : LoginButton}
+            {window.localStorage.getItem("token") ||
+            window.localStorage.getItem("cookie-google")
+              ? LogoutButton
+              : LoginButton}
           </Link>
 
           {/* Button Shopping Cart */}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./login.css";
 
 import { Button, Form, Input, ConfigProvider, message } from "antd";
@@ -38,9 +38,10 @@ const Login = () => {
     console.log("Failed:", errorInfo);
   };
 
-  const google = () => {
+  const googleLogin = () => {
     window.open("http://localhost:9000/customers/auth/google", "_self");
   };
+
   return (
     <>
       <div className=" bg-white mx-auto">
@@ -62,7 +63,7 @@ const Login = () => {
                 </i>
               </button>
               <button
-                onClick={google}
+                onClick={googleLogin}
                 className="cursor-pointer text-left h-[50px] leading-[50px] text-[#fff] bg-[#dd4b39] hover:opacity-90"
               >
                 <span className=" px-3 text-[20px] ">
@@ -141,7 +142,7 @@ const Login = () => {
                     </Form.Item>
                     <em style={{ textAlign: "right", display: "block" }}>
                       <a href="#" className="text-primary hover:text-blue-500">
-                        Forgot your password?
+                        Quên mật khẩu?
                       </a>
                     </em>
                   </div>
@@ -165,10 +166,10 @@ const Login = () => {
                       </ConfigProvider>
                     </Form.Item>
                     <h2 className="flex items-center ">
-                      New Customer?
+                      Bạn là khách hàng mới?
                       <Link to={"/accounts/register"}>
                         <div className="ml-2 ">
-                          Sign up
+                          Đăng ký
                           <ArrowRightOutlined size={""} />
                         </div>
                       </Link>
