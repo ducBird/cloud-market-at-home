@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./headerStyle.css";
 import { useCarts } from "../../hooks/useCart";
+
 import {
   AiOutlineUser,
   AiOutlineShoppingCart,
@@ -16,6 +17,7 @@ import axios from "axios";
 function Header() {
   const { items } = useCarts((state) => state);
   const { users } = useUser((state) => state);
+
   const quantityCart = items.reduce((total, item) => {
     return total + item.quantity;
   }, 0);
@@ -57,6 +59,9 @@ function Header() {
     </div>
   );
 
+  // xử lý click tìm kiếm
+  const [searchValue, setSearchValue] = React.useState("");
+
   return (
     <div className="fixed top-0 left-0 right-0 z-10">
       <div className="flex items-center px-3 pt-2 justify-between bg-white containerHeader">
@@ -72,14 +77,22 @@ function Header() {
           </a>
 
           {/* Input Search */}
-          <div className="ml-20 search-content">
-            <button className="ml-2 search-icon">
-              <AiOutlineSearch size={"28px"} className="opacity-80" />
-            </button>
+          <div className="ml-20 search-content relative flex items-center">
+            <Link
+              className="absolute left-[20px] z-10"
+              to={"/search-products?name=" + searchValue}
+            >
+              <AiOutlineSearch
+                size={"28px"}
+                className="opacity-80 inline-block"
+              />
+            </Link>
             <input
               type="text"
               className="rounded-tr-md rounded-bl-md rounded-br-3xl rounded-tl-3xl input-search"
               placeholder="Search..."
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
             />
           </div>
         </div>

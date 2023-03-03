@@ -8,7 +8,7 @@ import { axiosClient } from "../../../../libraries/axiosClient";
 function Categories() {
   const { categoryId } = useParams();
   const [category, setCategory] = React.useState({});
-
+  const [products, setProducts] = React.useState([]);
   React.useEffect(() => {
     if (categoryId) {
       axiosClient.get("/categories/" + categoryId).then((response) => {
@@ -16,6 +16,24 @@ function Categories() {
       });
     }
   }, [categoryId]);
+
+  // get dữ liệu products
+  React.useEffect(() => {
+    if (categoryId) {
+      axiosClient.get("/products/" + categoryId).then((response) => {
+        setProducts(response.data);
+      });
+    } else {
+      axiosClient.get("/products").then((response) => {
+        let listHotDeal = response.data.filter((product) => {
+          return product.discount;
+        });
+
+        setProducts(listHotDeal);
+      });
+    }
+  }, [categoryId]);
+
   return (
     <div className="shop-hot-deal">
       <div className="container">
@@ -42,7 +60,7 @@ function Categories() {
             <ShopSideBar />
           </>
           <>
-            <Products />
+            <Products products={products} />
           </>
         </div>
       </div>

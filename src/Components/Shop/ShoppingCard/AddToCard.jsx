@@ -6,15 +6,15 @@ function ButtonAddToCard(props) {
   const { add } = useCarts((state) => state);
   // console.log(props.addToCart);
   return (
-    <div className="add-to-card border-solid border-2  border-black mt-4  hover:bg-primary transition-all ease-in duration-200">
+    <div className="add-to-card border-2  border-black mt-4  hover:bg-primary transition-all ease-in duration-200">
       <button
         className="p-[9px] text-black hover:text-white text-sm"
         onClick={() => {
-          console.log(props.product);
+          console.log(props.product.stock);
           add(props.product);
         }}
       >
-        Thêm vào giỏ hàng
+        {props.product.stock === 0 ? "Hết hàng" : "Thêm vào giỏ hàng"}
       </button>
     </div>
   );

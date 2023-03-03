@@ -39,6 +39,7 @@ function ShopOrder() {
     });
 
     //console.log(values.orderDetails);
+    console.log("❤", values);
     axiosClient
       .post("/orders", values, initialValueOrder)
       .then((response) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Table } from "antd";
+import { Form, Input, Button } from "antd";
 import { axiosClient } from "../../../libraries/axiosClient";
 import { Link } from "react-router-dom";
 import numeral from "numeral";
@@ -136,7 +136,7 @@ function CheckOrder() {
                         orders.map((item) => {
                           return (
                             <tr key={item._id}>
-                              <td>
+                              <td className="item">
                                 <Link
                                   to={"/history-orders/order-" + item._id}
                                   className="text-blue-600"
@@ -144,7 +144,7 @@ function CheckOrder() {
                                   {item._id}
                                 </Link>
                               </td>
-                              <td className="flex">
+                              <td className="item flex">
                                 <Link to={"/history-orders/order-" + item._id}>
                                   <img
                                     className="w-[80px]"
@@ -167,24 +167,23 @@ function CheckOrder() {
                                   </Link>
                                 </div>
                               </td>
-                              <td>
+                              <td className="item">
                                 <p className="text-red-400">
                                   {numeral(
                                     item.orderDetails[0].product.discount
                                       ? item.orderDetails[0].product.total
                                       : item.orderDetails[0].product.price
                                   ).format("0,0")}{" "}
-                                  đ
                                 </p>
                               </td>
-                              <td>
+                              <td className="item">
                                 <p className="text-neutral-500">
                                   {moment(item.createdDate).format(
                                     "DD/MM/yyyy"
                                   )}
                                 </p>
                               </td>
-                              <td>
+                              <td className="item">
                                 <p className="text-primary">{item.status}</p>
                               </td>
                             </tr>

@@ -14,13 +14,14 @@ function AboutUs() {
         CÂU CHUYỆN CỦA CHÚNG TÔI
       </h1>
       <div className="grid grid-cols-3">
-        {employess.map((empl) => {
-          return (
-            <div key={empl._id} className="block m-auto">
-              <img src={empl.avatar} alt="" />
-            </div>
-          );
-        })}
+        {employess &&
+          employess.map((empl) => {
+            return (
+              <div key={empl._id} className="block m-auto">
+                <img src={empl.avatar} alt="" />
+              </div>
+            );
+          })}
       </div>
       <div className="mt-8">
         <h1 className=" text-[27px] text-[#429f5e] font-medium">

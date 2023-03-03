@@ -4,7 +4,7 @@ import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import HomePage from "./Components/Home";
 import ShopPage from "./Components/Shop/ShopPage";
-import Categories from "./Components/Shop/components/ListProducts/Categories";
+import ListProducts from "./Components/Shop/components/ListProducts";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductDetail from "./Components/Shop/components/ProductDetail/ProductDetail";
 import AboutUs from "./Components/AboutUs";
@@ -18,6 +18,7 @@ import VegetarianPage from "./Components/Community/VegetarianCommunity/Vegetaria
 import ShopOrder from "./Components/Shop/ShopOrder";
 import CheckOrder from "./Components/Shop/CheckOrder";
 import HistoryOrder from "./Components/HistoryOrder";
+import SearchProducts from "./Components/Shop/SearchProducts";
 function App() {
   return (
     <div className="App">
@@ -29,8 +30,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
-            <Route path="/shop/:categoryId" element={<Categories />} />
-            <Route path="/shop/hotdeal" element={<Categories />} />
+            <Route path="/shop/:categoryId" element={<ListProducts />} />
+            <Route path="/shop/hotdeal" element={<ListProducts />} />
             <Route path="/shop/:categoryId/:id" element={<ProductDetail />} />
             <Route path="/shop/card" element={<ShoppingCard />} />
             <Route path="/shop/order" element={<ShopOrder />} />
@@ -38,6 +39,7 @@ function App() {
             <Route path="/community" element={<Community />} />
             <Route path="/contactUs" element={<Contactus />} />
             <Route path="/history-orders" element={<CheckOrder />} />
+            <Route path="/search-products" element={<SearchProducts />} />
             <Route
               path="/history-orders/order-:id"
               element={<HistoryOrder />}

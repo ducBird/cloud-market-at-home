@@ -4,6 +4,7 @@ import { axiosClient } from "../../../../libraries/axiosClient";
 import BreadcrumbProductDetail from "./BreadcrumbProductDetail";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import ButtonAddToCard from "../../ShoppingCard/AddToCard";
+import numeral from "numeral";
 function ProductDetail() {
   const { categoryId } = useParams();
   const { id } = useParams();
@@ -71,7 +72,7 @@ function ProductDetail() {
                       : "list-none text-black"
                   }
                 >
-                  {product.price}
+                  {numeral(product.price).format("0,0")}
                 </span>
                 {/* giá khuyễn mãi */}
                 <br />
@@ -83,12 +84,14 @@ function ProductDetail() {
                 <span
                   className={product.discount ? "text-red-600 pr-3" : "hidden"}
                 >
-                  {product.total}
+                  {numeral(product.total).format("0,0")}
                 </span>
                 <p className="border-solid border-b border-primary mb-1 mt-1"></p>
                 <div>
                   <span className="text-primary">Tình trạng: </span>
-                  <span>{product.stock === 0 ? "Hết hàng" : "Còn hàng"}</span>
+                  <span className="text-red-500">
+                    {product.stock === 0 ? "Hết hàng" : "Còn hàng"}
+                  </span>
                 </div>
               </div>
             </div>

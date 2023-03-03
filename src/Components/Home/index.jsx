@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import IntroductionHomePage from "../Home/IntroductionHomePage";
-import Product from "./Product/Product";
+import Categories from "./Categories";
 import Testumonials from "./Testimonials/Testimonials";
 import AsSeemOn from "./AsSeenOn/asseemon";
 import { useUser } from "../../hooks/useUser";
@@ -47,7 +47,7 @@ function HomePage() {
     <div className="home mt-[-105px]">
       <section className="container">
         <IntroductionHomePage />
-        <Product />
+        <Categories />
         <Testumonials />
         <AsSeemOn />
       </section>
