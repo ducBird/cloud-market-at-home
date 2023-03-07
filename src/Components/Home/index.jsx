@@ -6,17 +6,18 @@ import Testumonials from "./Testimonials/Testimonials";
 import AsSeemOn from "./AsSeenOn/asseemon";
 import { useUser } from "../../hooks/useUser";
 import Cookies from "js-cookie";
+import { API_URL, FRONTLINE_URL } from "../../constants/URLS";
 function HomePage() {
   const { addUser } = useUser((state) => state);
   useEffect(() => {
     const getUser = () => {
-      fetch("http://localhost:9000/customers/login/success", {
+      fetch(API_URL + "/customers/login/success", {
         method: "GET",
         credentials: "include",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "https://localhost:3000",
+          "Access-Control-Allow-Origin": FRONTLINE_URL,
           "Access-Control-Allow-Credentials": true,
         },
       })

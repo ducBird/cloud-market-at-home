@@ -7,6 +7,7 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
 import { axiosClient } from "../../../../libraries/axiosClient";
 import { useUser } from "../../../../hooks/useUser";
+import { API_URL } from "../../../../constants/URLS";
 
 const Login = () => {
   const [loginForm] = Form.useForm();
@@ -39,7 +40,7 @@ const Login = () => {
   };
 
   const googleLogin = () => {
-    window.open("http://localhost:9000/customers/auth/google", "_self");
+    window.open(API_URL + "/customers/auth/google", "_self");
   };
 
   return (

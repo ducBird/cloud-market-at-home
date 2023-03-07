@@ -64,7 +64,7 @@ function ShopOrder() {
   return (
     <div className="container">
       <div className="logo">
-        <a href="http://localhost:3000/">
+        <a href="/">
           <img
             src={CloudMarketLogo}
             alt="logo Cloud Market At Home"
