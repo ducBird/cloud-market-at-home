@@ -5,6 +5,7 @@ import BreadcrumbProductDetail from "./BreadcrumbProductDetail";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import ButtonAddToCard from "../../ShoppingCard/AddToCard";
 import numeral from "numeral";
+import { API_URL } from "../../../../constants/URLS";
 function ProductDetail() {
   const { categoryId } = useParams();
   const { id } = useParams();
@@ -54,7 +55,11 @@ function ProductDetail() {
         </div>
         <div className="product clearfix flex ">
           <div className="product_detail-image flex-1">
-            <img className="w-[100%]" src={product.imageProduct} alt="" />
+            <img
+              className="w-[100%]"
+              src={`${API_URL}${product.imageProduct}`}
+              alt=""
+            />
           </div>
           <div className="content-product_detail flex-1">
             <div className="title-product_detail text-primary font-bold text-2xl ">

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import numeral from "numeral";
 import moment from "moment";
 import "./CheckOrder.css";
+import { API_URL } from "../../../constants/URLS";
 function CheckOrder() {
   // const { categoryId } = useParams();
   // const { id } = useParams();
@@ -148,9 +149,7 @@ function CheckOrder() {
                                 <Link to={"/history-orders/order-" + item._id}>
                                   <img
                                     className="w-[80px]"
-                                    src={
-                                      item.orderDetails[0].product.imageProduct
-                                    }
+                                    src={`${API_URL}${item.orderDetails[0].product.imageProduct}`}
                                     alt=""
                                   />
                                 </Link>

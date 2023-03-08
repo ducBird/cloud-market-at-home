@@ -5,6 +5,7 @@ import { Button, Radio, Form, Input, Space, message } from "antd";
 import { Link } from "react-router-dom";
 import numeral from "numeral";
 import { axiosClient } from "../../../libraries/axiosClient";
+import { API_URL } from "../../../constants/URLS";
 
 function ShopOrder() {
   const initialValueOrder = {
@@ -249,7 +250,10 @@ function ShopOrder() {
                                   </div>
                                 </div>
                                 <div className="w-[100px] h-[100px]">
-                                  <img src={item.product.imageProduct} alt="" />
+                                  <img
+                                    src={`${API_URL}${item.product.imageProduct}`}
+                                    alt=""
+                                  />
                                 </div>
                                 <div>
                                   <p className="pt-[40px] pl-[20px] text-primary">

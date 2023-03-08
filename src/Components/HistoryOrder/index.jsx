@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { axiosClient } from "../../libraries/axiosClient";
 import numeral from "numeral";
+import { API_URL } from "../../constants/URLS";
 function HistoryOrder() {
   const { id } = useParams();
   const [order, setOrder] = React.useState();
@@ -64,7 +65,7 @@ function HistoryOrder() {
                   <div className="flex flex-1">
                     <img
                       className="w-[100px]"
-                      src={orderDetail.product.imageProduct}
+                      src={`${API_URL}${orderDetail.product.imageProduct}`}
                       alt=""
                     />
                     <div>

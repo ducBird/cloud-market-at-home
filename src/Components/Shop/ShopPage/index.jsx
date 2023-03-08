@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { API_URL } from "../../../constants/URLS";
 import React from "react";
 import { Link } from "react-router-dom";
 import { axiosClient } from "../../../libraries/axiosClient";
@@ -31,7 +32,7 @@ function ShopPage() {
                 <div className="one-third mx-2 my-3" key={index}>
                   <Link to={`/shop/${category._id}`}>
                     <div className="one-third-image">
-                      <img src={category.imageURL} alt="" />
+                      <img src={`${API_URL}${category.imageURL}`} alt="" />
                     </div>
                     <div className="one-third-title">
                       <p className="text-primary text-center font-bold mt-3">

@@ -3,6 +3,7 @@ import { useCarts } from "../../../hooks/useCart";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import numeral from "numeral";
+import { API_URL } from "../../../constants/URLS";
 function ShoppingCard() {
   const { items, increase, decrease, remove } = useCarts((state) => state);
   const btnRef = React.useRef(null);
@@ -46,7 +47,7 @@ function ShoppingCard() {
                     <div>
                       <img
                         className="w-[300px] h-[300px]"
-                        src={productItemCart.product.imageProduct}
+                        src={`${API_URL}${productItemCart.product.imageProduct}`}
                         alt=""
                       />
                     </div>
