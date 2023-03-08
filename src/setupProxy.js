@@ -1,10 +1,11 @@
+const { FRONTLINE_URL } = require("./constants/URLS");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function (app) {
   app.use(
     "/uploads/img",
     createProxyMiddleware({
-      target: "http://localhost:9000",
+      target: FRONTLINE_URL,
       changeOrigin: true,
     })
   );
