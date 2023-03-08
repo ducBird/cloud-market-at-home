@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 import { axiosClient } from "../../../../libraries/axiosClient";
 function ShopSideBar() {
   const { categoryId } = useParams();
-  console.log(categoryId);
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {
     axiosClient.get("/categories").then((response) => {
