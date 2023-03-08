@@ -24,7 +24,7 @@ function Header() {
 
   const logout = async () => {
     localStorage.clear();
-    window.open("http://localhost:9000/customers/logout", "_self");
+    window.open(API_URL + "/customers/logout", "_self");
     // window.location.href = "accounts/login";
   };
 
@@ -67,7 +67,7 @@ function Header() {
       <div className="flex items-center px-3 pt-2 justify-between bg-white containerHeader">
         <div className="flex items-center flex-1 gap-5">
           {/* Logo */}
-          <a href="http://localhost:3000/">
+          <a href="/">
             <img
               src={CloudMarketLogo}
               alt="logo Cloud Market At Home"
