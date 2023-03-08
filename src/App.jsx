@@ -19,6 +19,7 @@ import ShopOrder from "./Components/Shop/ShopOrder";
 import CheckOrder from "./Components/Shop/CheckOrder";
 import HistoryOrder from "./Components/HistoryOrder";
 import SearchProducts from "./Components/Shop/SearchProducts";
+import SearchProductsByPrice from "./Components/Shop/SearchProducts/SearchProductsByPrice";
 function App() {
   return (
     <div className="App">
@@ -32,6 +33,10 @@ function App() {
             <Route path="/shop" element={<ShopPage />} />
             <Route path="/shop/:categoryId" element={<ListProducts />} />
             <Route path="/shop/hotdeal" element={<ListProducts />} />
+            <Route
+              path="/shop/products/search-price"
+              element={<SearchProductsByPrice />}
+            />
             <Route path="/shop/:categoryId/:id" element={<ProductDetail />} />
             <Route path="/shop/card" element={<ShoppingCard />} />
             <Route path="/shop/order" element={<ShopOrder />} />

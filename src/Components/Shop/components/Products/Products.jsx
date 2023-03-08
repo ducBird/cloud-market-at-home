@@ -14,6 +14,12 @@ function Products(props) {
   const closeModal = (isShow) => {
     setShowModal(isShow);
   };
+  if (!Array.isArray(props.products)) {
+    return <div>Invalid data</div>;
+  }
+  if (Array.isArray(props.products) && props.products.length === 0) {
+    return <div>Không có sản phẩm</div>;
+  }
   return (
     <div className="container flex-1 mt-[-15px]">
       <div className="grid grid-cols-4">

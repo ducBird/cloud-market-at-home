@@ -5,7 +5,6 @@ function AboutUs() {
   React.useEffect(() => {
     axiosClient.get("/employees").then((response) => {
       setEmployess(response.data);
-      console.log(response.data);
     });
   }, []);
   return (

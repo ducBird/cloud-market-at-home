@@ -6,7 +6,6 @@ import { axiosClient } from "../../../../libraries/axiosClient";
 import { API_URL } from "../../../../constants/URLS";
 function ShopSideBar() {
   const { categoryId } = useParams();
-  console.log(categoryId);
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {
     axiosClient.get("/categories").then((response) => {
