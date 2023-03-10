@@ -51,7 +51,11 @@ function Header() {
       </div>
       <span>{users.fullName}</span>
       <ul className="sub-c-user">
-        <li>{`Tài khoản của ${users.lastName}`}</li>
+        <li>
+          <Link
+            to={"/accounts/profile"}
+          >{`Tài khoản của ${users.lastName}`}</Link>
+        </li>
         <li>
           <button onClick={logout}>Đăng xuất</button>
         </li>

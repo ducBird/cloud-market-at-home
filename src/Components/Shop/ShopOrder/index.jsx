@@ -6,15 +6,17 @@ import { Link } from "react-router-dom";
 import numeral from "numeral";
 import { axiosClient } from "../../../libraries/axiosClient";
 import { API_URL } from "../../../constants/URLS";
+import { useUser } from "../../../../hooks/useUser";
 
 function ShopOrder() {
+  const { users } = useUser((state) => state);
   const initialValueOrder = {
     employeeId: null,
     createdDate: new Date(),
     shippedDate: null,
     status: "WAITING",
     shippingAddress: null,
-    customerId: null,
+    customerId: users.id,
   };
   const [refresh, setRefresh] = React.useState(0);
   const { items, remove } = useCarts((state) => state);

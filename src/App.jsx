@@ -20,6 +20,7 @@ import CheckOrder from "./Components/Shop/CheckOrder";
 import HistoryOrder from "./Components/HistoryOrder";
 import SearchProducts from "./Components/Shop/SearchProducts";
 import SearchProductsByPrice from "./Components/Shop/SearchProducts/SearchProductsByPrice";
+import Profile from "./Components/Home/Accounts/Profile";
 function App() {
   return (
     <div className="App">
@@ -51,6 +52,7 @@ function App() {
             />
             <Route path="/accounts/login" element={<Login />} />
             <Route path="/accounts/register" element={<Register />} />
+            <Route path="/accounts/profile" element={<Profile />} />
             <Route path="/community/recipes" element={<RecipesPage />} />
             <Route path="/community/vegetarian" element={<VegetarianPage />} />
 
