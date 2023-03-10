@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import numeral from "numeral";
 import { axiosClient } from "../../../libraries/axiosClient";
 import { API_URL } from "../../../constants/URLS";
-import { useUser } from "../../../../hooks/useUser";
+import { useUser } from "../../../hooks/useUser";
 
 function ShopOrder() {
   const { users } = useUser((state) => state);
@@ -99,7 +99,7 @@ function ShopOrder() {
             name="create-form"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
-            initialValues={{ remember: true }}
+            initialValues={users}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="on"

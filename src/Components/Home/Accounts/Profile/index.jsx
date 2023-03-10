@@ -77,7 +77,7 @@ const Profile = () => {
   };
 
   return (
-    <>
+    <div className="xl:mt-[240px]">
       <Form
         className="mt-10 flex justify-center"
         form={updateForm}
@@ -227,7 +227,7 @@ const Profile = () => {
           </div>
         </div>
       </Form>
-    </>
+    </div>
   );
 };
 
