@@ -64,6 +64,16 @@ function ShopOrder() {
   const payWithAccount = () => {
     console.log("pay");
   };
+  // validate phone number
+  const phoneValidator = (rule, value, callback) => {
+    const phoneNumberPattern =
+      /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
+    if (value && !phoneNumberPattern.test(value)) {
+      callback("Số điện thoại không hợp lệ");
+    } else {
+      callback();
+    }
+  };
   return (
     <div className="container">
       <div className="logo">
@@ -132,6 +142,9 @@ function ShopOrder() {
                     {
                       required: true,
                       message: "Bạn chưa nhập số điện thoại",
+                    },
+                    {
+                      validator: phoneValidator,
                     },
                   ]}
                 >
