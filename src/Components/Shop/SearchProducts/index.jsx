@@ -14,22 +14,26 @@ function SearchProducts() {
       axiosClient
         .post("/products/tim-kiem-san-pham", { name: name })
         .then((response) => {
-          console.log(response.data);
           setProducts(response.data);
         });
     }
   }, [name]);
 
   return (
-    <div className="container flex">
-      <ShopSideBar />
-      {products == null ? (
-        <div>
-          <p>Không tìm thấy sản phẩm nào</p>
-        </div>
-      ) : (
-        <Products products={products} />
-      )}
+    <div className="container sm:mt-[160px] lg:mt-[180px] xl:mt-[192px] sm:w-[550px] lg:w-[950px] xl:w-[1150px] 2xl:w-[1320px]">
+      <p className="mb-3 text-black font-bold sm:ml-2 lg:ml-0 lg:mt-3 lg:mb-10">
+        CÁC SẢN PHẨM VỪA TÌM THẤY
+      </p>
+      <div className="flex sm:mt-[]">
+        <ShopSideBar />
+        {products == null ? (
+          <div>
+            <p>Không tìm thấy sản phẩm nào</p>
+          </div>
+        ) : (
+          <Products products={products} />
+        )}
+      </div>
     </div>
   );
 }

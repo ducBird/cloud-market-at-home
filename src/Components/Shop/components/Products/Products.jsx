@@ -22,7 +22,7 @@ function Products(props) {
   }
   return (
     <div className="container flex-1 mt-[-15px]">
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {props.products &&
           props.products.map((product) => {
             return (

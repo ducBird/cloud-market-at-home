@@ -43,8 +43,8 @@ function ProductDetail() {
     setQuantity(e.target.value);
   };
   return (
-    <div className="product-detail">
-      <div className="container">
+    <div className="container ">
+      <div className="product-detail mx-auto my-auto sm:w-[550px] sm:mt-[10rem] md:w-[650px] lg:w-[950px] lg:mt-[2rem] xl:w-[1100px] 2xl:w-[1320px]">
         <div className="w-[100%]">
           <BreadcrumbProductDetail />
         </div>

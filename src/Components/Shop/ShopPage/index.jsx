@@ -11,8 +11,8 @@ function ShopPage() {
     });
   }, []);
   return (
-    <div className="shop-page">
-      <div className="container">
+    <div className="container">
+      <div className="shop-page mt-[10rem] sm:w-[550px] md:w-[650px] lg:mt-[1rem] lg:w-[900px] xl:mt-[4rem] mx-auto">
         <div className=" text-primary text-xs breadcrumb-collection">
           <span>
             <a href="/">Trang chủ</a>

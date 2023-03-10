@@ -15,6 +15,9 @@
   }
 
   .container {
-    @apply w-[1320px] my-0 mx-auto py-[20px] px-0;
+    @apply w-[1600px] my-0 mx-auto py-[20px] px-0;
+  }
+  body {
+    @apply overflow-x-hidden;
   }
 }

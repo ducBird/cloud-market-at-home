@@ -61,7 +61,7 @@ function Categories() {
         (price.value.min ? "min=" + price.value.min : "") +
         (price.value.min ? "&" : "") +
         (price.value.max ? "max=" + price.value.max : "");
-
+      console.log(url);
       if (categoryId) {
         axiosClient
           .get("/products/" + categoryId + "?" + url)
@@ -81,8 +81,8 @@ function Categories() {
   }, [selectedPrice]);
 
   return (
-    <div className="shop-hot-deal">
-      <div className="container">
+    <div className="container">
+      <div className="shop mt-[10rem] sm:w-[550px] md:w-[650px] lg:mt-[4rem] lg:w-[900px] xl:w-[1100px] 2xl:w-[1320px] mx-auto">
         <div className=" text-primary text-xs breadcrumb-collection">
           <span>
             <a href="/">Trang chủ</a>

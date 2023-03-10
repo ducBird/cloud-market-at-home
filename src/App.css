@@ -11,20 +11,6 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.thumbnail-overlay .info {
-  position: absolute;
-  margin-top: 35%;
-  margin-left: 24%;
-  color: #ffff;
-  border: 1px solid #fff;
-  border-radius: 5%;
-  padding: 10px 20px;
-}
-.thumbnail-overlay .info:hover {
-  color: black;
-  background-color: #fff;
-}
-
 .sale-banner {
   background: #ff5757;
   padding: 8px 12px;

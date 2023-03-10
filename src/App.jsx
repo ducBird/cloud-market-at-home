@@ -19,24 +19,19 @@ import ShopOrder from "./Components/Shop/ShopOrder";
 import CheckOrder from "./Components/Shop/CheckOrder";
 import HistoryOrder from "./Components/HistoryOrder";
 import SearchProducts from "./Components/Shop/SearchProducts";
-import SearchProductsByPrice from "./Components/Shop/SearchProducts/SearchProductsByPrice";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <header>
+        <header className="w-[100%]">
           <Header />
         </header>
-        <section className="relative w-[100%] top-[130px]">
+        <section className="w-[100%] lg:mt-[9rem] xl:mt-[8rem]">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
             <Route path="/shop/:categoryId" element={<ListProducts />} />
             <Route path="/shop/hotdeal" element={<ListProducts />} />
-            <Route
-              path="/shop/products/search-price"
-              element={<SearchProductsByPrice />}
-            />
             <Route path="/shop/:categoryId/:id" element={<ProductDetail />} />
             <Route path="/shop/card" element={<ShoppingCard />} />
             <Route path="/shop/order" element={<ShopOrder />} />
@@ -63,10 +58,12 @@ function App() {
               }
             />
           </Routes>
+        </section>
+        <footer>
           {/* <footer> */}
           <Footer />
           {/* </footer> */}
-        </section>
+        </footer>
       </BrowserRouter>
     </div>
   );
