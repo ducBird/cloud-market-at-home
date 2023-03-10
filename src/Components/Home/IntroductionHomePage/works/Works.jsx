@@ -5,7 +5,7 @@ import "./Work.css";
 function Works() {
   return (
     <div className="work-section w-[100%] mx-auto">
-      <div className="container">
+      <div className="container md:w-[650px]">
         <p className="work-activities border-b border-primary">
           Cách thức hoạt động
         </p>

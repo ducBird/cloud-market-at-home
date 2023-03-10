@@ -20,7 +20,7 @@ function Sliders() {
             return (
               <div className="silder" key={index}>
                 <img
-                  className="w-[100%] h-[700px] mx-auto"
+                  className="w-[100%] h-[400px] md:h-[500px] lg:h-[700px]  mx-auto"
                   src={value.imgSlider}
                   alt=""
                 />

@@ -16,7 +16,7 @@ function ShopSideBar() {
     // });
   }, []);
   return (
-    <div className="side-bar mr-[20px]">
+    <div className="side-bar mr-[20px] hidden lg:block">
       <div className="side-bar-block pr-[40px] border-r border-primary">
         <h4 className="toggle text-primary text-[20px] font-bold">
           Sản phẩm của chúng tôi

@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <>
-      <div className=" bg-white mx-auto">
+      <div className=" bg-white mx-auto mt-[184px]">
         <div className="w-[80%] p-4 mx-auto">
           {/* <CloseOutlined
             style={{ color: "red", fontSize: "25px", cursor: "pointer" }}

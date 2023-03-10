@@ -6,7 +6,7 @@ import { API_URL } from "../../../../constants/URLS";
 function index(props) {
   const product = props.product;
   return (
-    <div>
+    <div className="h-[390px] md:h-[320px] lg:h-[350px] xl:h-[430px]">
       <div className="product mb-9 mx-2 border" key={index}>
         <div className="product-image relative">
           <Link to={`/shop/${product.categoryId}/${product._id}`}>
@@ -19,7 +19,7 @@ function index(props) {
           </Link>
           <div className="thumbnail-overlay">
             <span>
-              <div className="info">
+              <div className="info absolute sm:mx-[40%] sm:my-[40%] md:mx-[30%] md:my-[30%] xl:mx-[40%] xl:my-[40%] text-[#fff] border border-[#fff] rounded-md sm:py-[5px] sm:px-[5px]  hover:text-black hover:bg-[#fff]">
                 <button type="button" onClick={() => props.openModal(product)}>
                   Xem nhanh
                 </button>

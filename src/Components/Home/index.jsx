@@ -45,13 +45,11 @@ function HomePage() {
     // console.log("getCookies ", getCookies);
   }, []);
   return (
-    <div className="home mt-[-105px]">
-      <section className="container">
-        <IntroductionHomePage />
-        <Categories />
-        <Testumonials />
-        <AsSeemOn />
-      </section>
+    <div className="container home mt-[5rem] xl:mt-[4rem]">
+      <IntroductionHomePage />
+      <Categories />
+      <Testumonials />
+      <AsSeemOn />
     </div>
   );
 }
