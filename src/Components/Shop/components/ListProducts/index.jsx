@@ -34,31 +34,31 @@ function Categories() {
     }
   }, [categoryId]);
 
-  useEffect(() => {
-    if (selectedPrice) {
-      const price = prices.find((item) => item.id === selectedPrice);
-      const url =
-        (price.value.min ? "min=" + price.value.min : "") +
-        (price.value.min ? "&" : "") +
-        (price.value.max ? "max=" + price.value.max : "");
-      console.log(url);
-      if (categoryId) {
-        axiosClient
-          .get("/products/" + categoryId + "?" + url)
-          .then((response) => {
-            setProducts(response.data);
-          });
-      } else {
-        axiosClient.get("/products/?" + url).then((response) => {
-          let listHotDeal = response.data.filter((product) => {
-            return product.discount;
-          });
+  // useEffect(() => {
+  //   if (selectedPrice) {
+  //     const price = prices.find((item) => item.id === selectedPrice);
+  //     const url =
+  //       (price.value.min ? "min=" + price.value.min : "") +
+  //       (price.value.min ? "&" : "") +
+  //       (price.value.max ? "max=" + price.value.max : "");
+  //     console.log(url);
+  //     if (categoryId) {
+  //       axiosClient
+  //         .get("/products/" + categoryId + "?" + url)
+  //         .then((response) => {
+  //           setProducts(response.data);
+  //         });
+  //     } else {
+  //       axiosClient.get("/products/?" + url).then((response) => {
+  //         let listHotDeal = response.data.filter((product) => {
+  //           return product.discount;
+  //         });
 
-          setProducts(listHotDeal);
-        });
-      }
-    }
-  }, [selectedPrice]);
+  //         setProducts(listHotDeal);
+  //       });
+  //     }
+  //   }
+  // }, [selectedPrice]);
 
   return (
     <div className="container">
