@@ -1,35 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import { useState, Fragment, useEffect } from "react";
+import React from "react";
 import ShopSideBar from "../SideBar/ShopSideBar";
 import { Link, useParams } from "react-router-dom";
 import Products from "../Products/Products";
 import { axiosClient } from "../../../../libraries/axiosClient";
-import { Select } from "antd";
+
 function Categories() {
-  const prices = [
-    { id: "price_1", name: "Dưới 10.000 đ", value: { min: 0, max: 10000 } },
-    {
-      id: "price_2",
-      name: "Từ 10.000 đ - 50.000 đ",
-      value: { min: 10000, max: 50000 },
-    },
-    {
-      id: "price_3",
-      name: "Từ 50.000 đ - 100.000 đ",
-      value: { min: 50000, max: 100000 },
-    },
-    {
-      id: "price_4",
-      name: "Từ 100.000 đ - 150.000 đ",
-      value: { min: 100000, max: 150000 },
-    },
-    { id: "price_5", name: "Trên 150.000 đ", value: { min: 150000 } },
-  ];
   const { categoryId } = useParams();
-  const [category, setCategory] = useState({});
-  const [products, setProducts] = useState([]);
-  const [selectedPrice, setSelectedPrice] = useState();
-  useEffect(() => {
+  const [category, setCategory] = React.useState({});
+  const [products, setProducts] = React.useState([]);
+  React.useEffect(() => {
     if (categoryId) {
       axiosClient.get("/categories/" + categoryId).then((response) => {
         setCategory(response.data);
@@ -38,7 +18,7 @@ function Categories() {
   }, [categoryId]);
 
   // get dữ liệu products
-  useEffect(() => {
+  React.useEffect(() => {
     if (categoryId) {
       axiosClient.get("/products/" + categoryId).then((response) => {
         setProducts(response.data);
@@ -93,35 +73,10 @@ function Categories() {
               {categoryId ? category.name : "Hot deal"}
             </Link>
           </span>
-
           <span className="mx-2">/</span>
           <span className="text-black">Trang 1 của 1</span>
           <div className="mt-[20px] font-bold text-2xl">
             <h1>{category.name}</h1>
-          </div>
-          <div className="mt-3 text-black text-[13px] font-bold flex">
-            <p className="mr-5 pt-[8px]">Bộ lọc</p>
-            <div className="w-[230px]">
-              {/* <DropDowns /> */}
-              <div className="">
-                Giá:
-                <Select
-                  className="ml-2 w-[190px]"
-                  value={selectedPrice}
-                  onChange={function (e) {
-                    setSelectedPrice(e);
-                  }}
-                >
-                  {prices.map((option) => (
-                    <Select.Option key={option.name} value={option.id}>
-                      {/* <Link to={"/shop/products/search-price"}> */}
-                      <p>{option.name}</p>
-                      {/* </Link> */}
-                    </Select.Option>
-                  ))}
-                </Select>
-              </div>
-            </div>
           </div>
           <p className="border-b border-primary my-5"></p>
         </div>

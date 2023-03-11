@@ -12,13 +12,11 @@ function CheckOrder() {
   const [orders, setOrders] = React.useState([]);
   const [createForm] = Form.useForm();
   const onFinish = (values) => {
-    axiosClient
-      .post("/orders/tim-kiem-theo-so-dien-thoai", values)
-      .then((response) => {
-        //console.log(response.data);
-        setOrders(response.data);
-        window.localStorage.setItem("phoneNumber", response.data.phoneNumber);
-      });
+    axiosClient.post("/orders/lich-su-don-hang", values).then((response) => {
+      //console.log(response.data);
+      setOrders(response.data);
+      window.localStorage.setItem("phoneNumber", response.data.phoneNumber);
+    });
   };
   const onFinishFailed = (errors) => {
     console.log("💣", errors);
