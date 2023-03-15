@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { API_URL } from "../../../constants/URLS";
 import React from "react";
 import { Link } from "react-router-dom";
 import { axiosClient } from "../../../libraries/axiosClient";
@@ -10,8 +11,8 @@ function ShopPage() {
     });
   }, []);
   return (
-    <div className="container">
-      <div className="shop-page mt-[10rem] sm:w-[550px] md:w-[650px] lg:mt-[1rem] lg:w-[900px] xl:mt-[4rem] mx-auto">
+    <div className="shop-page">
+      <div className="container">
         <div className=" text-primary text-xs breadcrumb-collection">
           <span>
             <a href="/">Trang chủ</a>
@@ -31,7 +32,7 @@ function ShopPage() {
                 <div className="one-third mx-2 my-3" key={index}>
                   <Link to={`/shop/${category._id}`}>
                     <div className="one-third-image">
-                      <img src={category.imageURL} alt="" />
+                      <img src={`${API_URL}${category.imageURL}`} alt="" />
                     </div>
                     <div className="one-third-title">
                       <p className="text-primary text-center font-bold mt-3">

@@ -27,7 +27,7 @@ function App() {
         <header className="w-[100%]">
           <Header />
         </header>
-        <section className="w-[100%] lg:mt-[9rem] xl:mt-[8rem]">
+        <section className="w-[100%]">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />

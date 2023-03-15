@@ -3,6 +3,7 @@ import Data from "./Data";
 import { Link } from "react-router-dom";
 import "./data.css";
 import { axiosClient } from "../../../libraries/axiosClient";
+import { API_URL } from "../../../constants/URLS";
 const List = () => {
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {
@@ -24,7 +25,7 @@ const List = () => {
               <Link to={`/shop/${category._id}`}>
                 <div className="btn__radius h-80 overflow-hidden rounded-md">
                   <img
-                    src={category.imageURL}
+                    src={`${API_URL}${category.imageURL}`}
                     alt=""
                     className="btn__product h-full w-full cursor-pointer object-cover"
                   />

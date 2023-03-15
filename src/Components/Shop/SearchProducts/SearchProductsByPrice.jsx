@@ -1,25 +1,14 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
 import { axiosClient } from "../../../libraries/axiosClient";
 import Products from "../components/Products/Products";
 import ShopSideBar from "../components/SideBar/ShopSideBar";
-
-function SearchProducts() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const name = searchParams.get("name");
+function SearchProductsByPrice() {
   const [products, setProducts] = React.useState([]);
-
   React.useEffect(() => {
-    if (name) {
-      axiosClient
-        .post("/products/tim-kiem-san-pham", { name: name })
-        .then((response) => {
-          console.log(response.data);
-          setProducts(response.data);
-        });
-    }
-  }, [name]);
-
+    axiosClient.post("/products/gia-ban").then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
   return (
     <div className="container flex">
       <ShopSideBar />
@@ -34,4 +23,4 @@ function SearchProducts() {
   );
 }
 
-export default SearchProducts;
+export default SearchProductsByPrice;

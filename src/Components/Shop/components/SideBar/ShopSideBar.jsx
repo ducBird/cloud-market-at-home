@@ -3,9 +3,9 @@ import React from "react";
 import "./ShopSideBar.css";
 import { Link, useParams } from "react-router-dom";
 import { axiosClient } from "../../../../libraries/axiosClient";
+import { API_URL } from "../../../../constants/URLS";
 function ShopSideBar() {
   const { categoryId } = useParams();
-  console.log(categoryId);
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {
     axiosClient.get("/categories").then((response) => {
@@ -16,7 +16,7 @@ function ShopSideBar() {
     // });
   }, []);
   return (
-    <div className="side-bar mr-[20px] hidden lg:block">
+    <div className="side-bar mr-[20px]">
       <div className="side-bar-block pr-[40px] border-r border-primary">
         <h4 className="toggle text-primary text-[20px] font-bold">
           Sản phẩm của chúng tôi
@@ -33,7 +33,7 @@ function ShopSideBar() {
                   >
                     <img
                       className="w-[20px] mr-[10px]"
-                      src={category.imageURL}
+                      src={`${API_URL}${category.imageURL}`}
                       alt=""
                     />
                     <p>{category.name}</p>

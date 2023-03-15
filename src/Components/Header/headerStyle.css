@@ -1,7 +1,8 @@
 .mini-cart {
   border: 1px solid #005745;
   /* border-radius: 12px; */
-
+  width: 150px;
+  height: 50px;
   margin-top: 5px;
   margin-bottom: 10px;
   display: flex;
@@ -33,6 +34,7 @@
 
 .search-content {
   position: relative;
+  flex-grow: 0.6;
 }
 
 .search-content > button {
@@ -50,6 +52,7 @@
 .input-search {
   width: calc(100% - 10px);
   max-width: 600px;
+  min-width: 600px;
   border: 1px solid #005745;
   /* border-radius: 12px; */
   background-color: #f6f4f2;
