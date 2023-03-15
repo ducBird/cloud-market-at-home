@@ -3,7 +3,6 @@ import React from "react";
 import "./ShopSideBar.css";
 import { Link, useParams } from "react-router-dom";
 import { axiosClient } from "../../../../libraries/axiosClient";
-import { API_URL } from "../../../../constants/URLS";
 function ShopSideBar() {
   const { categoryId } = useParams();
   console.log(categoryId);
@@ -34,7 +33,7 @@ function ShopSideBar() {
                   >
                     <img
                       className="w-[20px] mr-[10px]"
-                      src={`${API_URL}${category.imageURL}`}
+                      src={category.imageURL}
                       alt=""
                     />
                     <p>{category.name}</p>

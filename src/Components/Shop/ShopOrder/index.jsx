@@ -6,17 +6,15 @@ import { Link } from "react-router-dom";
 import numeral from "numeral";
 import { axiosClient } from "../../../libraries/axiosClient";
 import { API_URL } from "../../../constants/URLS";
-import { useUser } from "../../../hooks/useUser";
 
 function ShopOrder() {
-  const { users } = useUser((state) => state);
   const initialValueOrder = {
     employeeId: null,
     createdDate: new Date(),
     shippedDate: null,
     status: "WAITING",
     shippingAddress: null,
-    customerId: users.id,
+    customerId: null,
   };
   const [refresh, setRefresh] = React.useState(0);
   const { items, remove } = useCarts((state) => state);
@@ -64,16 +62,6 @@ function ShopOrder() {
   const payWithAccount = () => {
     console.log("pay");
   };
-  // validate phone number
-  const phoneValidator = (rule, value, callback) => {
-    const phoneNumberPattern =
-      /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
-    if (value && !phoneNumberPattern.test(value)) {
-      callback("Số điện thoại không hợp lệ");
-    } else {
-      callback();
-    }
-  };
   return (
     <div className="container">
       <div className="logo">
@@ -109,7 +97,7 @@ function ShopOrder() {
             name="create-form"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
-            initialValues={users}
+            initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="on"
@@ -142,9 +130,6 @@ function ShopOrder() {
                     {
                       required: true,
                       message: "Bạn chưa nhập số điện thoại",
-                    },
-                    {
-                      validator: phoneValidator,
                     },
                   ]}
                 >

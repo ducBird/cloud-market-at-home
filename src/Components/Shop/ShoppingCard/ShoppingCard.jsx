@@ -21,13 +21,13 @@ function ShoppingCard() {
     }
   }, [items]);
   return (
-    <div className="container">
-      <div className="shopCart sm:w-[550px] sm:mx-auto md:w-[650px] lg:w-[950px] xl:w-[1150px] 2xl:w-[1320px] sm:mt-[12rem] lg:mt-[3rem] xl:mt-[80px]">
+    <div className="shopCart">
+      <div className="container">
         <div className="text-3xl text-primary">Shopping Cart</div>
         <hr className="mt-[20px]" />
-        <div className="items lg:flex">
+        <div className="items flex">
           <div className="baner-holder w-[50px]"></div>
-          <div className="w-[100%] lg:w-[70%] ">
+          <div className="w-[70%] ">
             {items &&
               items.map((productItemCart) => {
                 return (
@@ -46,7 +46,7 @@ function ShoppingCard() {
                     </div>
                     <div>
                       <img
-                        className="lg:w-[300px] lg:h-[300px] md:w-[200px] md:h-[200px]"
+                        className="w-[300px] h-[300px]"
                         src={`${API_URL}${productItemCart.product.imageProduct}`}
                         alt=""
                       />
@@ -132,10 +132,10 @@ function ShoppingCard() {
                 );
               })}
           </div>
-          <div className="border border-black w-[100%] lg:w-[30%] mt-[20px] lg:ml-[20px] rounded-md">
+          <div className="border border-black w-[30%] mt-[20px] ml-[20px] rounded-md">
             <div className="m-[20px]">
               <div>
-                <span className="text-2xl text-primary font-bold ">
+                <span className="text-2xl text-primary font-bold">
                   Tổng tiền:{" "}
                 </span>
                 <p className="text-right mr-[20px] w-[100%] inline text-2xl text-black font-bold">
@@ -143,9 +143,9 @@ function ShoppingCard() {
                 </p>
               </div>
               <div className="mt-[20px]">
-                <p className="text-2xl text-primary md:text-xl">Ghi Chú: </p>
+                <p className="text-2xl text-primary">Ghi Chú: </p>
                 <textarea
-                  className="border border-black rounded-md mt-[10px] sm:w-[509px] md:w-[609px] lg:w-[226px] xl:w-[280px]"
+                  className="border border-black rounded-md mt-[10px]"
                   cols="43"
                   rows="5"
                 ></textarea>
