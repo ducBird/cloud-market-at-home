@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CloudMarketLogo from "../../../assets/header/logo/cloud-market.jpg";
 import { useCarts } from "../../../hooks/useCart";
 import { Button, Radio, Form, Input, Space, message } from "antd";
@@ -6,15 +6,16 @@ import { Link } from "react-router-dom";
 import numeral from "numeral";
 import { axiosClient } from "../../../libraries/axiosClient";
 import { API_URL } from "../../../constants/URLS";
+import { useUser } from "../../../hooks/useUser";
 
 function ShopOrder() {
+  const { users } = useUser((state) => state);
   const initialValueOrder = {
     employeeId: null,
     createdDate: new Date(),
     shippedDate: null,
-    status: "WAITING",
     shippingAddress: null,
-    customerId: null,
+    customerId: users.id,
   };
   const [refresh, setRefresh] = React.useState(0);
   const { items, remove } = useCarts((state) => state);
@@ -26,9 +27,10 @@ function ShopOrder() {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
+
   const [createForm] = Form.useForm();
   // xử lý thêm mới
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     values.orderDetails = [];
     //value.createdDate = new Date();
     items.forEach((item) => {
@@ -41,14 +43,16 @@ function ShopOrder() {
 
     //console.log(values.orderDetails);
     console.log("❤", values);
-    axiosClient
+    await axiosClient
       .post("/orders", values, initialValueOrder)
       .then((response) => {
         message.success("thanh toán thành công ❤");
-        // reset dữ liệu đã nhập ở form nhập
-        createForm.resetFields();
-        // load lại form
         setRefresh((pre) => pre + 1);
+        createForm.resetFields();
+        window.localStorage.removeItem("cart-storage");
+        setTimeout(() => {
+          window.location = "/shop/order";
+        }, 1000);
       })
       .catch((err) => {
         message.error("Thanh toán thất bại 😥");
@@ -97,7 +101,7 @@ function ShopOrder() {
             name="create-form"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
-            initialValues={{ remember: true }}
+            initialValues={users}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="on"

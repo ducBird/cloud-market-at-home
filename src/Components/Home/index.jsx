@@ -5,7 +5,6 @@ import Categories from "./Categories";
 import Testumonials from "./Testimonials/Testimonials";
 import AsSeemOn from "./AsSeenOn/asseemon";
 import { useUser } from "../../hooks/useUser";
-import Cookies from "js-cookie";
 import { API_URL, FRONTLINE_URL } from "../../constants/URLS";
 function HomePage() {
   const { addUser } = useUser((state) => state);
@@ -45,7 +44,7 @@ function HomePage() {
     // console.log("getCookies ", getCookies);
   }, []);
   return (
-    <div className="container home mt-[5rem] xl:mt-[4rem]">
+    <div className="container home">
       <IntroductionHomePage />
       <Categories />
       <Testumonials />

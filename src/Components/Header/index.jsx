@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./headerStyle.css";
 import { useCarts } from "../../hooks/useCart";
@@ -12,7 +12,6 @@ import CloudMarketLogo from "../../assets/header/logo/cloud-market.jpg";
 import Navbar from "./Navi/Navbar";
 import { useUser } from "../../hooks/useUser";
 import { API_URL } from "../../constants/URLS";
-import axios from "axios";
 
 function Header() {
   const { items } = useCarts((state) => state);
@@ -51,7 +50,11 @@ function Header() {
       </div>
       <span>{users.fullName}</span>
       <ul className="sub-c-user">
-        <li>{`Tài khoản của ${users.lastName}`}</li>
+        <li>
+          <Link
+            to={"/accounts/profile"}
+          >{`Tài khoản của ${users.lastName}`}</Link>
+        </li>
         <li>
           <button onClick={logout}>Đăng xuất</button>
         </li>

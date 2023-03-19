@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { axiosClient } from "../../../../libraries/axiosClient";
+import { API_URL } from "../../../../constants/URLS";
 
 const Register = () => {
   const [registerForm] = Form.useForm();
@@ -33,6 +34,9 @@ const Register = () => {
       });
   };
   const onFinishFailed = () => {};
+  const googleLogin = () => {
+    window.open(API_URL + "/customers/auth/google", "_self");
+  };
   return (
     <div>
       <div className=" bg-white mx-auto">
@@ -43,30 +47,19 @@ const Register = () => {
           <div className="text-left text-[45px]">Đăng ký tài khoản</div>
           <hr className="my-4 text-gray-300" />
           <div className="max-w-[500px] mx-auto">
-            {/* Button Login with Facebook or Google */}
-            <div className="">
-              <div className="cursor-pointer text-left h-[50px] mb-2 leading-[50px] text-[#fff] bg-[#3b5998] hover:opacity-90">
-                <span className="px-3 text-[20px]">
-                  Đăng nhập với tài khoản Facebook
-                </span>
-                <i className="float-right h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19]">
-                  <FacebookOutlined />
-                </i>
-              </div>
-              <div className="cursor-pointer text-left h-[50px] leading-[50px] text-[#fff] bg-[#dd4b39] hover:opacity-90">
-                <span className=" px-3 text-[20px] ">
-                  Đăng nhập với tài khoản Google
-                </span>
-                <i className="float-right  h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19] ">
-                  <GoogleOutlined />
-                </i>
-              </div>
-            </div>
-            <div className="my-10 relative">
+            <button
+              onClick={googleLogin}
+              className="cursor-pointer w-[100%] text-[#fff] bg-[#dd4b39] hover:opacity-90 flex items-center justify-between"
+            >
+              <span className=" px-3 text-[20px] ">
+                Đăng nhập với tài khoản Google
+              </span>
+              <i className="h-[50px] w-[50px] text-[25px] text-center bg-[#ffffff19] flex items-center justify-center">
+                <GoogleOutlined />
+              </i>
+            </button>
+            <div className="my-5 relative">
               <hr className="text-[#beadad]" />
-              <div className="absolute top-[-11px] left-[250px] px-[15px] bg-white">
-                Or
-              </div>
             </div>
             <Form
               form={registerForm} //2.1

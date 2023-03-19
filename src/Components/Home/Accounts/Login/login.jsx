@@ -45,41 +45,24 @@ const Login = () => {
 
   return (
     <>
-      <div className=" bg-white mx-auto mt-[184px]">
+      <div className=" bg-white mx-auto">
         <div className="w-[80%] p-4 mx-auto">
-          {/* <CloseOutlined
-            style={{ color: "red", fontSize: "25px", cursor: "pointer" }}
-          /> */}
           <div className="text-left text-[45px]">Đăng Nhập</div>
           <hr className="my-4 text-gray-300" />
           <div className="max-w-[500px] mx-auto">
-            {/* Button Login with Facebook or Google */}
-            <div className="">
-              <button className="cursor-pointer text-left h-[50px] mb-2 leading-[50px] text-[#fff] bg-[#3b5998] hover:opacity-90">
-                <span className="px-3 text-[20px]">
-                  Đăng nhập với tài khoản Facebook
-                </span>
-                <i className="float-right h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19]">
-                  <FacebookOutlined />
-                </i>
-              </button>
-              <button
-                onClick={googleLogin}
-                className="cursor-pointer text-left h-[50px] leading-[50px] text-[#fff] bg-[#dd4b39] hover:opacity-90"
-              >
-                <span className=" px-3 text-[20px] ">
-                  Đăng nhập với tài khoản Google
-                </span>
-                <i className="float-right  h-[50px] w-[50px] leading-[35px] text-[25px] text-center bg-[#ffffff19] ">
-                  <GoogleOutlined />
-                </i>
-              </button>
-            </div>
-            <div className="my-10 relative">
+            <button
+              onClick={googleLogin}
+              className="cursor-pointer w-[100%] text-[#fff] bg-[#dd4b39] hover:opacity-90 flex items-center justify-between"
+            >
+              <span className=" px-3 text-[20px] ">
+                Đăng nhập với tài khoản Google
+              </span>
+              <i className="h-[50px] w-[50px] text-[25px] text-center bg-[#ffffff19] flex items-center justify-center">
+                <GoogleOutlined />
+              </i>
+            </button>
+            <div className="my-5 relative">
               <hr className="text-[#beadad]" />
-              <div className="absolute top-[-11px] left-[250px] px-[15px] bg-white">
-                Or
-              </div>
             </div>
             <Form
               form={loginForm}
