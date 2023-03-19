@@ -67,7 +67,7 @@ function App() {
             <header className="w-[100%]">
               <Header />
             </header>
-            <section className="relative w-[100%] top-[130px]">
+            <section className="relative w-[90%] top-[130px] mx-auto">
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/shop" element={<ShopPage />} />
