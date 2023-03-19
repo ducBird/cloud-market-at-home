@@ -26,7 +26,7 @@ import CloudMarketLogo from "./assets/header/logo/cloud-market.jpg";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    axiosClient.get("/categories").then((response) => {
+    axiosClient.get("/products").then((response) => {
       setIsLoading(false);
     });
   }, []);
