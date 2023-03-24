@@ -52,7 +52,7 @@ function ShopOrder() {
         window.localStorage.removeItem("cart-storage");
         setTimeout(() => {
           window.location = "/shop/order";
-        }, 1000);
+        }, 2000);
       })
       .catch((err) => {
         message.error("Thanh toán thất bại 😥");
@@ -65,6 +65,15 @@ function ShopOrder() {
   };
   const payWithAccount = () => {
     console.log("pay");
+  };
+  const phoneValidator = (rule, value, callback) => {
+    const phoneNumberPattern =
+      /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
+    if (value && !phoneNumberPattern.test(value)) {
+      callback("Số điện thoại không hợp lệ");
+    } else {
+      callback();
+    }
   };
   return (
     <div className="container">
@@ -134,6 +143,9 @@ function ShopOrder() {
                     {
                       required: true,
                       message: "Bạn chưa nhập số điện thoại",
+                    },
+                    {
+                      validator: phoneValidator,
                     },
                   ]}
                 >
@@ -289,9 +301,9 @@ function ShopOrder() {
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                               <div className="inline">
                                 <p>
-                                  {item.quantity * item.product.discount
-                                    ? `${item.product.total}`
-                                    : `${item.product.price}`}
+                                  {item.product.discount
+                                    ? `${item.product.total * item.quantity}`
+                                    : `${item.product.price * item.quantity}`}
                                 </p>
                               </div>
                             </td>

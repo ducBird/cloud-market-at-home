@@ -20,6 +20,25 @@ function HistoryOrder() {
   //     item.order.orderDetails.product.total * item.order.orderDetails.quantity
   //   );
   // }, 0);
+  const renderStatus = (result) => {
+    return (
+      <div>
+        {result && result === "WAITING CONFIRMATION ORDER"
+          ? "Đang Chờ Xác Nhận"
+          : result === "CONFIRMED ORDER"
+          ? "Đã Xác Nhận Đơn Hàng"
+          : result === "SHIPPING CONFIRMATION"
+          ? "Xác Nhận Vận Chuyển"
+          : result === "DELIVERY IN PROGRESS"
+          ? "Đang Giao Hàng"
+          : result === "DELIVERY SUCCESS"
+          ? "Giao Hàng Thành Công"
+          : result === "RECEIVED ORDER"
+          ? "Đã Nhận Hàng"
+          : "Đã Hủy Đơn Hàng"}
+      </div>
+    );
+  };
   return (
     <div className="container">
       <div>
@@ -55,7 +74,10 @@ function HistoryOrder() {
             </p>
             <div className="font-bold">
               Trạng thái:
-              <span className="text-primary"> {order?.status}</span>
+              <span className="text-primary">
+                {" "}
+                {renderStatus(order?.status)}
+              </span>
             </div>
           </div>
           {order &&
@@ -77,7 +99,12 @@ function HistoryOrder() {
                     </div>
                   </div>
                   <div className="price">
-                    <p className="text-red-600">
+                    <p
+                      className={
+                        orderDetail.product.discount ? "text-red-500" : "hidden"
+                      }
+                    >
+                      Giá giảm:{" "}
                       {numeral(
                         orderDetail.product.discount
                           ? orderDetail.product.total
@@ -92,7 +119,17 @@ function HistoryOrder() {
                           : "list-none text-black"
                       }
                     >
+                      Giá niêm yết:{" "}
                       {numeral(orderDetail.product.price).format("0,0")} đ
+                    </p>
+                    <p className={"text-primary font-bold"}>
+                      Tổng tiền:{" "}
+                      {numeral(
+                        orderDetail.product.discount
+                          ? orderDetail.product.total * orderDetail.quantity
+                          : orderDetail.product.price * orderDetail.quantity
+                      ).format("0,0")}{" "}
+                      đ
                     </p>
                   </div>
                 </div>

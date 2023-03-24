@@ -16,6 +16,8 @@ function FeaturedProductSlider() {
     speed: 400,
     slidesToShow: 5,
     slidesToScroll: 2,
+    autoplay: true,
+    autoplaySpeed: 4000,
   };
   const { categoryId } = useParams();
   const [products, setProducts] = React.useState([]);

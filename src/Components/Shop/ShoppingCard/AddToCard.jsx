@@ -10,7 +10,7 @@ function ButtonAddToCard(props) {
       <button
         className="p-[9px] text-black hover:text-white text-sm"
         onClick={() => {
-          console.log(props.product.stock);
+          //console.log(props.product.stock);
           add(props.product);
         }}
       >

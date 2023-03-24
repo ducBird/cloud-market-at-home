@@ -49,6 +49,15 @@ function CheckOrder() {
   //     setProduct(response.data);
   //   });
   // }, [categoryId, id]);
+  const phoneValidator = (rule, value, callback) => {
+    const phoneNumberPattern =
+      /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
+    if (value && !phoneNumberPattern.test(value)) {
+      callback("Số điện thoại không hợp lệ");
+    } else {
+      callback();
+    }
+  };
   return (
     <div className="container">
       <div>
@@ -72,14 +81,7 @@ function CheckOrder() {
               rules={[
                 { required: true, message: "Không thể để trống" },
                 {
-                  validate: {
-                    validator: function (value) {
-                      const phoneNumberRegex =
-                        /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/;
-                      return phoneNumberRegex.test(value);
-                    },
-                    message: "Số điện thoại không hợp lệ",
-                  },
+                  validator: phoneValidator,
                 },
               ]}
             >
@@ -190,9 +192,17 @@ function CheckOrder() {
                               <td className="item">
                                 <p className="text-red-400">
                                   {numeral(
-                                    item.orderDetails[0].product.discount
-                                      ? item.orderDetails[0].product.total
-                                      : item.orderDetails[0].product.price
+                                    // item.orderDetails[0].product.discount
+                                    //   ? item.orderDetails[0].product.total *
+                                    //       item.orderDetails[0].quantity
+                                    //   : item.orderDetails[0].product.price *
+                                    //       item.orderDetails[0].quantity
+                                    item.orderDetails.reduce((total, item) => {
+                                      return (
+                                        total +
+                                        item.product.total * item.quantity
+                                      );
+                                    }, 0)
                                   ).format("0,0")}{" "}
                                 </p>
                               </td>
