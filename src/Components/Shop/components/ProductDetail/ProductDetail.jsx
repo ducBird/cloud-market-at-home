@@ -95,7 +95,7 @@ function ProductDetail() {
                 <div>
                   <span className="text-primary">Tình trạng: </span>
                   <span className="text-red-500">
-                    {product.stock === 0 ? "Hết hàng" : "Còn hàng"}
+                    {product.stock <= 0 ? "Hết hàng" : "Còn hàng"}
                   </span>
                 </div>
               </div>
@@ -109,11 +109,15 @@ function ProductDetail() {
                 <p className="mb-4">Số lượng</p>
                 <div className="h-[40px]">
                   <span className="product-minus border-solid border-2 border-black p-2">
-                    <button onClick={minusClick}>
+                    <button
+                      disabled={product.stock <= 0 ? true : false}
+                      onClick={minusClick}
+                    >
                       <MinusOutlined />
                     </button>
                   </span>
                   <input
+                    disabled={product.stock <= 0 ? true : false}
                     className="border border-black h-[100%] text-center"
                     type="number"
                     min={1}
@@ -121,7 +125,10 @@ function ProductDetail() {
                     onChange={handleChange}
                   />
                   <span className="product-minus border-solid border-2 border-black p-2">
-                    <button onClick={plusClick}>
+                    <button
+                      disabled={product.stock <= 0 ? true : false}
+                      onClick={plusClick}
+                    >
                       <PlusOutlined />
                     </button>
                   </span>
